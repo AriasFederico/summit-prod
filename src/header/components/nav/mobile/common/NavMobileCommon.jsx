@@ -13,6 +13,7 @@ export const NavMobileCommon = () => {
 			<Logo
 				className={'NavMobileCommon-logo'}
 				svg={'NavMobileCommon-svg-logo'}
+				click={closeMenu}
 			/>
 
 			{activeMenu ? (
@@ -25,7 +26,7 @@ export const NavMobileCommon = () => {
 				<div
 					className='NavMobileCommon-menu'
 					data-aos={'fade-left'}
-					data-aos-duration={1500}
+					data-aos-duration={500}
 				>
 					<NavLink
 						to={'/'}

@@ -7,16 +7,13 @@ export const Logo = ({ className, svg, click }) => {
 				xmlns='http://www.w3.org/2000/svg'
 				width='1em'
 				height='1em'
-				viewBox='0 0 24 24'
+				viewBox='0 0 32 32'
 				className={svg}
+				data-aos={'fade-down'}
 			>
 				<path
-					fill='none'
-					stroke='currentColor'
-					strokeLinecap='round'
-					strokeLinejoin='round'
-					strokeWidth='2'
-					d='m8 3l4 8l5-5l5 15H2z'
+					fill='currentColor'
+					d='M15.506 2.44L3 24h2.313L15.51 6.42l10.119 17.379L29.574 17h-2.312l-1.637 2.82zm.02 7.99L8.813 22h2.315l4.4-7.59L24.027 29h2.315z'
 				/>
 			</svg>
 			Summit.

@@ -4,13 +4,16 @@ export const Hamburger = ({ className, click }) => {
 			xmlns='http://www.w3.org/2000/svg'
 			width='1em'
 			height='1em'
-			viewBox='0 0 2048 2048'
+			viewBox='0 0 21 21'
 			className={className}
 			onClick={click}
 		>
 			<path
-				fill='currentColor'
-				d='M256 512h1536v128H256zm384 512V896h1152v128zm384 384v-128h768v128z'
+				fill='none'
+				stroke='currentColor'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+				d='M4.5 6.5h12m-12.002 4h11.997M4.5 14.5h11.995'
 			/>
 		</svg>
 	);
