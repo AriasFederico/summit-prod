@@ -1,0 +1,57 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/mixins';
+
+.Hero {
+  width: 95%;
+  max-width: 87.5rem;
+  margin: 2rem auto;
+  text-align: center;
+
+  &-h1 {
+    font-size: map-get($size-h1, 'small');
+    font-weight: 800;
+    color: map-get($colors, 'black');
+    ;
+
+    @include respond-to('medium') {
+      font-size: map-get($size-h1, 'medium');
+    }
+
+    @include respond-to('large') {
+      font-size: map-get($size-h1, 'large');
+    }
+
+  }
+
+  &-item-fx {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &-p {
+    line-height: 1.7;
+    max-width: 30rem;
+    margin: 0 auto;
+    color: map-get($colors, 'black');
+    ;
+  }
+
+  &-link {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+    background-color: map-get($colors, 'blue');
+    color: white;
+    border-radius: map-get($radius , 'buttons');
+    transition: .3s all;
+
+    &:hover {
+      background-color: map-get($colors, 'black');
+    }
+  }
+}

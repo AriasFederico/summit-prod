@@ -1,0 +1,30 @@
+$size-h1 : (
+  'large': 3.3rem,
+  'medium': 2.7rem,
+  'small': 2.25rem
+);
+
+$size-h2 : (
+  'large': 3rem,
+  'medium' : 2.5rem,
+  'small' : 2rem,
+);
+
+$breakpoint-medium: 780px;
+$breakpoint-large: 1280px;
+$breakpoint-heigth-mobile: 400px;
+
+
+@mixin respond-to($breakpoint) {
+ @if $breakpoint == 'medium' {
+    @media 
+    (width >= $breakpoint-medium) {
+      @content;
+    }
+  } @else if $breakpoint == 'large' {
+    @media 
+    (width >= $breakpoint-large) {
+      @content;
+    }
+  }
+};

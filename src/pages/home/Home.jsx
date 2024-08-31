@@ -1,4 +1,9 @@
 import './Home.scss';
+import { Hero } from './components/hero/Hero';
 export const Home = () => {
-	return <div>Home</div>;
+	return (
+		<div className='Home'>
+			<Hero />
+		</div>
+	);
 };
