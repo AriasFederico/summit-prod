@@ -1,30 +1,26 @@
-import { useState } from 'react'
+import Aos from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Header } from './header/Header';
+import { Home } from './pages/home/Home';
 
 function App() {
-  const [count, setCount] = useState(0)
+	useEffect(() => {
+		Aos.init();
+	}, []);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-        </a>
-        <a href="https://react.dev" target="_blank">
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<BrowserRouter>
+			<Header />
+			<Routes>
+				<Route path='/' element={<Home />} />
+				{/* <Route path='/' element={''}/> */}
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
-export default App
+// path para 404
+
+export default App;
