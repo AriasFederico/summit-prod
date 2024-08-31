@@ -1,0 +1,17 @@
+.ItemCheck {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  &-svg {
+    color: green;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &-p {
+    text-align: start;
+    color: gray;
+    user-select: none;
+  }
+}

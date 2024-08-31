@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+import banner from '../../../../../public/banner/calc.png';
 import { Rocket } from '../../../../components/svg/Rocket';
+import { ItemCheck } from '../checks/ItemCheck';
 import './Hero.scss';
 export const Hero = () => {
 	return (
@@ -15,6 +17,21 @@ export const Hero = () => {
 					Registra tu negocio
 					<Rocket />
 				</Link>
+
+				<div className='Hero-checks'>
+					<ItemCheck p={'Registro y acceso fácil'} />
+					<ItemCheck p={'Gestión de lista de precios de hasta 100 productos'} />
+					<ItemCheck p={'Acceso a 4 calculadoras de porcentajes'} />
+				</div>
+			</div>
+			<div className='Hero-item-secondary'>
+				<img
+					src={banner}
+					alt=''
+					className='Hero-banner'
+					data-aos={'fade-up'}
+					data-aos-duration={1200}
+				/>
 			</div>
 		</main>
 	);
