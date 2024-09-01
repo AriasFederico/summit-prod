@@ -1,0 +1,10 @@
+@import '../../../../sass/mixins';
+@import '../../../../sass/variables';
+
+.ComponentBanner {
+  margin-bottom: 5rem;
+
+  @include respond-to('medium') {
+    margin-bottom: 10rem;
+  }
+}

@@ -32,7 +32,6 @@
   }
 
   &-link {
-    font-size: 1.1rem;
     border-bottom: 2px solid transparent;
     padding: .3rem;
     color: map-get($colors, 'black');
@@ -40,17 +39,15 @@
   }
 
   &-link-active {
-    font-size: 1.1rem;
     border-bottom: 2px solid map-get($colors, 'blue');
     padding: .3rem;
     color: map-get($colors, 'blue');
   }
 
   &-link-register {
-    font-size: 1.1rem;
     background-color: map-get($colors, 'blue');
     color: white;
-    padding: .5rem 1.5rem;
+    padding: .7rem 1.5rem;
     border-radius: map-get($radius, 'buttons');
     transition: .3s all;
 
