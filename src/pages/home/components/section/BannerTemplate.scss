@@ -1,0 +1,76 @@
+@import '../../../../sass/mixins';
+@import '../../../../sass/variables';
+
+.BannerTemplate {
+  width: 95%;
+  max-width: 90rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  text-align: center;
+  color: map-get($colors, 'black');
+
+  @include respond-to('large') {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include respond-to('medium') {
+      gap: 2rem;
+    }
+
+    @include respond-to('large') {
+      width: 50%;
+      text-align: start;
+    }
+  }
+
+  &-item-secondary {
+    width: 90%;
+    margin: 0 auto;
+
+    @include respond-to('large') {
+      width: 50%;
+    }
+  }
+
+  &-h2 {
+    font-size: map-get($size-h2, 'small');
+
+    @include respond-to('large') {
+      font-size: map-get($size-h2, 'large');
+    }
+  }
+
+  &-p {
+    line-height: 1.7;
+
+    @include respond-to('medium') {
+      max-width: 45rem;
+      margin: 0 auto;
+    }
+  }
+
+  &-img {
+    width: 100%;
+    max-height: 25rem;
+    object-fit: cover;
+    object-position: top;
+    border-radius: map-get($radius, 'item');
+
+    @include respond-to('medium') {
+      width: 75%;
+    }
+
+    @include respond-to('large') {
+      width: 85%;
+      max-height: 30rem;
+    }
+  }
+}

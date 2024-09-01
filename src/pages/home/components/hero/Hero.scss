@@ -4,7 +4,7 @@
 .Hero {
   width: 95%;
   max-width: 87.5rem;
-  margin: 2rem auto;
+  margin: 2rem auto 5rem;
   text-align: center;
 
   display: flex;
@@ -12,24 +12,25 @@
   gap: 4rem;
 
   @include respond-to('large') {
-    margin: 5rem auto;
+    margin: 4rem auto 10rem;
     flex-direction: row;
     text-align: start;
-    gap: 0rem;
+    gap: 3rem;
   }
 
   &-h1 {
     font-size: map-get($size-h1, 'small');
     font-weight: 800;
     color: map-get($colors, 'black');
-    ;
 
     @include respond-to('medium') {
       font-size: map-get($size-h1, 'medium');
+      margin: 0 auto;
     }
 
     @include respond-to('large') {
       font-size: map-get($size-h1, 'large');
+      margin: 0;
     }
   }
 
@@ -37,18 +38,26 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    flex-grow: 2;
 
-    @include respond-to('large') {}
+    @include respond-to('large') {
+      width: 60%;
+    }
   }
 
   &-checks {
-    margin-top: 1rem;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 1.5rem;
     width: 95%;
+
+    @include respond-to('medium') {
+      justify-content: center;
+    }
+
+    @include respond-to('large') {
+      justify-content: start;
+    }
   }
 
   &-item-secondary {
@@ -57,20 +66,23 @@
     width: 90%;
 
     @include respond-to('large') {
-      flex-grow: 1;
-      width: 40%;
+      width: 50%;
     }
-
   }
 
   &-banner {
     width: 100%;
+    max-height: 27rem;
     object-fit: cover;
-    object-position: top;
+    object-position: center;
     overflow: hidden;
-    max-height: 30rem;
     border-radius: map-get($radius, 'item');
     box-shadow: 14px -6px 20px 0px #80808040;
+
+    @include respond-to('large') {
+      height: 100%;
+      max-height: 35rem;
+    }
   }
 
   &-p {
@@ -90,11 +102,10 @@
     align-items: center;
     gap: .5rem;
     justify-content: center;
-    margin-top: 1rem;
     padding: 1rem 3rem;
     background-color: map-get($colors, 'blue');
     color: white;
-    border-radius: map-get($radius , 'buttons');
+    border-radius: map-get($radius, 'buttons');
     transition: .3s all;
 
     &:hover {

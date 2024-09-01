@@ -1,4 +1,4 @@
-import { Check } from '../../../../components/svg/Check';
+import { Check } from '../../../../../components/svg/Check';
 import './ItemCheck.scss';
 export const ItemCheck = ({ p }) => {
 	return (

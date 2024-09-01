@@ -1,0 +1,62 @@
+@import '../../../../../sass/mixins';
+@import '../../../../../sass/variables';
+
+.NavPcCommon {
+
+  display: none;
+
+  @include respond-to('large') {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 92rem;
+    margin: 0 auto;
+  }
+
+  &-logo {
+    color: map-get($colors, 'blue');
+    font-size: 2rem;
+    user-select: none;
+  }
+
+  &-svg-logo {
+    color: map-get($colors, 'blue');
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &-menu {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  &-link {
+    font-size: 1.1rem;
+    border-bottom: 2px solid transparent;
+    padding: .3rem;
+    color: map-get($colors, 'black');
+    transition: .5s all ease;
+  }
+
+  &-link-active {
+    font-size: 1.1rem;
+    border-bottom: 2px solid map-get($colors, 'blue');
+    padding: .3rem;
+    color: map-get($colors, 'blue');
+  }
+
+  &-link-register {
+    font-size: 1.1rem;
+    background-color: map-get($colors, 'blue');
+    color: white;
+    padding: .5rem 1.5rem;
+    border-radius: map-get($radius, 'buttons');
+    transition: .3s all;
+
+    &:hover {
+      background-color: map-get($colors, 'black');
+    }
+  }
+
+}
