@@ -20,7 +20,7 @@
 
   &-h1 {
     font-size: map-get($size-h1, 'small');
-    font-weight: 800;
+    font-weight: 600;
     color: map-get($colors, 'black');
 
     @include respond-to('medium') {
@@ -29,6 +29,7 @@
     }
 
     @include respond-to('large') {
+      font-weight: 800;
       font-size: map-get($size-h1, 'large');
       margin: 0;
     }

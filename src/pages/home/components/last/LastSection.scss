@@ -26,12 +26,13 @@
     margin-top: 1rem;
     padding: .7rem 2.5rem;
     border-radius: map-get($radius, 'buttons');
-    background-color: map-get($colors, 'blue');
-    color: white;
+    color: map-get($colors, 'black');
     transition: .3s all;
+    border: 1px solid map-get($colors, 'black');
 
     &:hover {
       background-color: map-get($colors, 'black');
+      color: white;
     }
   }
 }

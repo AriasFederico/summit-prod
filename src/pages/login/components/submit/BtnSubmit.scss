@@ -1,0 +1,16 @@
+@import '../../../../sass/mixins';
+@import '../../../../sass/variables';
+
+.BtnSubmit {
+  background-color: white;
+  border: 1px solid #82abef;
+  border-radius: map-get($radius, 'buttons');
+  padding: 1rem;
+  font-size: 1rem;
+  color: map-get($colors, 'blue');
+  cursor: pointer;
+
+  &:hover {
+    background-color: map-get($colors, 'white-secondary');
+  }
+}
