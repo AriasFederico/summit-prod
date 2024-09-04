@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Header } from './header/Header';
 import { Home } from './pages/home/Home';
 import { Login } from './pages/login/Login';
+import { Register } from './pages/register/Register';
 
 function App() {
 	useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/ingresar' element={<Login />} />
+				<Route path='/registrarse' element={<Register />} />
 			</Routes>
 		</BrowserRouter>
 	);

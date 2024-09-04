@@ -1,7 +1,7 @@
 @import '../../sass/variables';
 @import '../../sass/mixins';
 
-.Login {
+.Register {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,6 +9,7 @@
   background-color: #f9f9f9;
 
   &-form-div {
+    position: relative;
     background-color: white;
     width: 90%;
     border-radius: 20px;
@@ -99,12 +100,6 @@
     color: transparent;
     font-size: .9rem;
     user-select: none;
-  }
-
-  &-forgot {
-    text-align: center;
-    color: map-get($colors, 'black');
-    font-size: .9rem;
   }
 
   &-register {

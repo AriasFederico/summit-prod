@@ -12,10 +12,9 @@ export const Login = () => {
 				</div>
 				<form className='Login-form'>
 					<div className='Login-presentation'>
-						<h1 className='Login-h1'>Iniciar sesión</h1>
+						<h2 className='Login-h2'>Iniciar sesión</h2>
 						<p className='Login-p'>Ingresá los detalles de tu dirección</p>
 					</div>
-
 					<div className='Login-personal'>
 						<InputLogin
 							className={'Login-input'}
@@ -33,15 +32,19 @@ export const Login = () => {
 							change={''}
 							name={'Contraseña'}
 						/>
-						{/* error component */}
+
+						<p className='Login-error'>Email o contraseña incorrecta</p>
 					</div>
 
-					<Link className='Login-forgot'>¿ Olvidaste tu contraseña ?</Link>
+					<Link className='Login-forgot' to={'#'}>
+						¿ Olvidaste tu contraseña ?
+					</Link>
 
 					<div className='Login-btns'>
 						<BtnSubmit type='submit' />
-
-						<Link className='Login-register'>No tengo una cuenta</Link>
+						<Link className='Login-register' to={'/registrarse'}>
+							No tengo una cuenta
+						</Link>
 					</div>
 				</form>
 			</div>
