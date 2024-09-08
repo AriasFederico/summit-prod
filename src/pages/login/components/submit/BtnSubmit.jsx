@@ -1,9 +1,13 @@
 import './BtnSubmit.scss';
-import { Link } from 'react-router-dom';
-export const BtnSubmit = ({ type }) => {
+import { useRegisterSubmit } from '../../../register/hooks/useRegisterSubmit';
+
+export const BtnSubmit = ({ type, successful }) => {
 	return (
-		<button className='BtnSubmit' type={type}>
-			Ingresar
+		<button
+			className={successful ? 'BtnSubmit-successful' : 'BtnSubmit'}
+			type={type}
+		>
+			{successful ? 'Registro exitoso' : 'Ingresar'}
 		</button>
 	);
 };

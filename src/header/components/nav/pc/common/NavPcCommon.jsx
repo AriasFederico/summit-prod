@@ -8,14 +8,6 @@ export const NavPcCommon = () => {
 			<Logo className={'NavPcCommon-logo'} svg={'NavPcCommon-svg-logo'} />
 			<div className='NavPcCommon-menu'>
 				<NavLink
-					to={'/'}
-					className={({ isActive }) =>
-						isActive ? 'NavPcCommon-link-active' : 'NavPcCommon-link'
-					}
-				>
-					Inicio
-				</NavLink>
-				<NavLink
 					to={'/ingresar'}
 					className={({ isActive }) =>
 						isActive ? 'NavPcCommon-link-active' : 'NavPcCommon-link'

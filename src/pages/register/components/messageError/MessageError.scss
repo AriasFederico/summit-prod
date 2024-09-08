@@ -1,0 +1,18 @@
+@import '../../../../sass/variables';
+@import '../../../../sass/mixins';
+
+.MessageError {
+  align-self: self-start;
+  margin-top: .5rem;
+  color: map-get($colors, 'black');
+  font-size: .9rem;
+  user-select: none;
+
+  &-active {
+    align-self: self-start;
+    margin-top: .5rem;
+    color: red;
+    font-size: .9rem;
+    user-select: none;
+  }
+}

@@ -95,8 +95,9 @@
   }
 
   &-error {
+    align-self: flex-start;
     margin-top: .5rem;
-    color: transparent;
+    color: red;
     font-size: .9rem;
     user-select: none;
   }

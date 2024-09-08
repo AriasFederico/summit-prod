@@ -29,15 +29,6 @@ export const NavMobileCommon = () => {
 					data-aos-duration={500}
 				>
 					<NavLink
-						to={'/'}
-						className={({ isActive }) =>
-							isActive ? 'NavMobileCommon-link-active' : 'NavMobileCommon-link'
-						}
-						onClick={closeMenu}
-					>
-						INICIO
-					</NavLink>
-					<NavLink
 						to={'/ingresar'}
 						className={({ isActive }) =>
 							isActive ? 'NavMobileCommon-link-active' : 'NavMobileCommon-link'
