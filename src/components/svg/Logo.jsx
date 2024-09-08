@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
 import './styles/Logo.scss';
+import { useContext } from 'react';
+import { GlobalContext } from '../../context/GlobalContext';
 export const Logo = ({ className, svg, click }) => {
+	const { logged } = useContext(GlobalContext);
 	return (
-		<Link className={`Logo ${className}`} onClick={click} to={'/'}>
+		<Link
+			className={`Logo ${className}`}
+			onClick={click}
+			to={logged ? '/control' : '/'}
+		>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
 				width='1em'

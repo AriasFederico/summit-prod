@@ -4,6 +4,7 @@ import { Logo } from '../../components/svg/Logo';
 import { useForm } from '../../utils/useForm';
 import { InputRegister } from './components/input/InputRegister';
 import { MessageError } from './components/messageError/MessageError';
+import { RegisterHeader } from './components/registerHeader/RegisterHeader';
 import { BtnRegister } from './components/submit/BtnRegister';
 import { useRegister } from './hooks/useRegister';
 import { useRegisterSubmit } from './hooks/useRegisterSubmit';
@@ -24,10 +25,10 @@ export const Register = () => {
 					<Logo className={'Register-logo'} svg={'Register-svg'} />
 				</div>
 				<form className='Register-form' onSubmit={handleSubmit}>
-					<div className='Register-presentation'>
-						<h2 className='Register-h2'>Registra tu negocio</h2>
-						<p className='Register-p'>Ingresa tus datos para el registro</p>
-					</div>
+					<RegisterHeader
+						title={'Registra tu negocio'}
+						subtitle={'Ingresa tus datos para el registro'}
+					/>
 					<div className='Register-personal'>
 						<InputRegister
 							className={'Register-input'}

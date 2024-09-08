@@ -97,6 +97,14 @@
   &-error {
     align-self: flex-start;
     margin-top: .5rem;
+    color: transparent;
+    font-size: .9rem;
+    user-select: none;
+  }
+
+  &-error-active {
+    align-self: flex-start;
+    margin-top: .5rem;
     color: red;
     font-size: .9rem;
     user-select: none;

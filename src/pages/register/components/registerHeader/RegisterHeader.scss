@@ -1,0 +1,11 @@
+.RegisterHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
+
+  &-subtitle {
+    font-size: .9rem;
+  }
+}
