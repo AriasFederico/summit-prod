@@ -13,13 +13,13 @@
   }
 
   &-logo {
-    color: map-get($colors, 'blue');
+    color: map-get($colors, 'black');
     font-size: 1.5rem;
     user-select: none;
   }
 
   &-svg-logo {
-    color: map-get($colors, 'blue');
+    color: map-get($colors, 'black');
     width: 2rem;
     height: 2rem;
   }
@@ -40,7 +40,6 @@
     border-radius: map-get($radius, 'buttons');
     padding: .1rem;
   }
-
 
   &-menu {
     z-index: 1000;

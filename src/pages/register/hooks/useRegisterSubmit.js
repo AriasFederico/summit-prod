@@ -1,10 +1,13 @@
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../../../context/GlobalContext';
 import { appFirebase } from '../../../services/firebase/credentials';
 const auth = getAuth(appFirebase);
 
 export const useRegisterSubmit = (values, resetForm) => {
+	const redirect = useNavigate();
+	const { setLogged, setUser } = useContext(GlobalContext);
 	const [error, setError] = useState(false);
 	const [successful, setSuccessful] = useState(false);
 
@@ -34,6 +37,7 @@ export const useRegisterSubmit = (values, resetForm) => {
 		try {
 			await createUserWithEmailAndPassword(auth, values.email, values.password);
 			console.log('Registro exitoso:', values);
+			redirect('/control');
 			resetForm();
 			showMessageSuccessful();
 

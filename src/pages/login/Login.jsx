@@ -1,5 +1,6 @@
 import './Login.scss';
 import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Logo } from '../../components/svg/Logo';
 import { useForm } from '../../utils/useForm';
 import { InputLogin } from './components/InputLogin';
@@ -8,7 +9,9 @@ import { BtnSubmit } from './components/submit/BtnSubmit';
 import { useLogin } from './hooks/useLogin';
 import { useLoginSubmit } from './hooks/useLoginSubmit';
 
-export const Login = () => {
+export const Login = ({ verifyLogged }) => {
+	if (verifyLogged) return <Navigate to={'/control'} />;
+
 	const { initialLogin } = useLogin();
 	const { values, handleChange } = useForm(initialLogin);
 	const { handleSubmit, loginError } = useLoginSubmit(values);

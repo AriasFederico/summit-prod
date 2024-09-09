@@ -12,7 +12,7 @@ import { Dashboard } from './pages/private/dashboard/Dashboard';
 import { Register } from './pages/register/Register';
 
 function App() {
-	const { logged } = useContext(GlobalContext);
+	const { logged, user } = useContext(GlobalContext);
 	useEffect(() => {
 		Aos.init();
 	}, []);
@@ -21,9 +21,15 @@ function App() {
 		<BrowserRouter>
 			<Header />
 			<Routes>
-				<Route path='/' element={<Home logged={logged} />} />
-				<Route path='/ingresar' element={<Login />} />
-				<Route path='/registrarse' element={<Register />} />
+				<Route
+					path='/'
+					element={<Home verifyLogged={logged} logged={logged} />}
+				/>
+				<Route path='/ingresar' element={<Login verifyLogged={logged} />} />
+				<Route
+					path='/registrarse'
+					element={<Register verifyLogged={logged} />}
+				/>
 				<Route
 					path='/control'
 					element={

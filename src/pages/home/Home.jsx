@@ -5,7 +5,7 @@ import { LastSection } from './components/last/LastSection';
 import { ComponentBanner } from './components/section/BannerTemplate';
 
 export const Home = ({ logged }) => {
-	logged && Navigate('/control');
+	if (logged) return <Navigate to={'/control'} />;
 
 	return (
 		<div className='Home'>

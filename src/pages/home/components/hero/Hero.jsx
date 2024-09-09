@@ -2,19 +2,18 @@ import { Link } from 'react-router-dom';
 import banner from '../../../../../public/banner/hero.jpg';
 import { Rocket } from '../../../../components/svg/Rocket';
 import { ItemCheck } from './checks/ItemCheck';
+import { HeroHeader } from './heroHeader/heroHeader';
 import './Hero.scss';
 export const Hero = () => {
 	return (
 		<main className='Hero' data-aos={'zoom'} data-aos-duration={1000}>
 			<div className='Hero-item-fx'>
-				<h1 className='Hero-h1'>
-					Gestiona tus precios, maximiza tus ganancias
-				</h1>
-				<p className='Hero-p'>
-					Summit es una aplicación web gratuita e innovadora diseñada para
-					facilitar la gestión y el cálculo de precios de manera rápida y
-					eficiente
-				</p>
+				<HeroHeader
+					title={'Gestiona tus precios, maximiza tus ganancias'}
+					subtitle={
+						'Summit es una aplicación web gratuita e innovadora diseñada para facilitar la gestión y el cálculo de precios de manera rápida y eficiente'
+					}
+				/>
 				<Link to={'/registrarse'} className='Hero-link'>
 					Registra tu negocio
 					<Rocket />

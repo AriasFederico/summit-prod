@@ -35,6 +35,17 @@
     }
   }
 
+  &-p {
+    line-height: 1.7;
+    max-width: 30rem;
+    margin: 0 auto;
+    color: map-get($colors, 'black');
+
+    @include respond-to('large') {
+      margin: 0;
+    }
+  }
+
   &-item-fx {
     display: flex;
     flex-direction: column;
@@ -87,16 +98,6 @@
     }
   }
 
-  &-p {
-    line-height: 1.7;
-    max-width: 30rem;
-    margin: 0 auto;
-    color: map-get($colors, 'black');
-
-    @include respond-to('large') {
-      margin: 0;
-    }
-  }
 
   &-link {
     align-self: center;

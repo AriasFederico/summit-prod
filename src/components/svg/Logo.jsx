@@ -16,7 +16,7 @@ export const Logo = ({ className, svg, click }) => {
 				height='1em'
 				viewBox='0 0 32 32'
 				className={svg}
-				data-aos={'fade-down'}
+				data-aos={'zoom-in'}
 			>
 				<path
 					fill='currentColor'

@@ -11,7 +11,7 @@ export const GlobalProvider = ({ children }) => {
 		const auth = getAuth();
 		const unsuscribe = onAuthStateChanged(auth, (user) => {
 			if (user) {
-				setUser(user);
+				setUser(user.email);
 				setLogged(true);
 			} else {
 				setUser(null);
@@ -22,9 +22,28 @@ export const GlobalProvider = ({ children }) => {
 		return () => unsuscribe();
 	}, []);
 
+	const handleSignOut = async () => {
+		const auth = getAuth();
+		try {
+			await signOut(auth); // Llama a la función de Firebase
+			setUser(null);
+			setLogged(false);
+		} catch (error) {
+			console.error('Error al cerrar sesión:', error);
+		}
+	};
+
 	return (
 		<GlobalContext.Provider
-			value={{ user, logged, setLogged, signOut, loading, setLoading }}
+			value={{
+				user,
+				setUser,
+				logged,
+				setLogged,
+				signOut: handleSignOut,
+				loading,
+				setLoading,
+			}}
 		>
 			{children}
 		</GlobalContext.Provider>
