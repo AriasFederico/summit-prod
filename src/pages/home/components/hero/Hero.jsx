@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import banner from '../../../../../public/banner/hero.jpg';
 import { Rocket } from '../../../../components/svg/Rocket';
 import { ItemCheck } from './checks/ItemCheck';
-import { HeroHeader } from './heroHeader/heroHeader';
+import { HeroHeader } from './heroHeader/HeroHeader';
 import './Hero.scss';
 export const Hero = () => {
 	return (
