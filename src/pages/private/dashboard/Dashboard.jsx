@@ -1,3 +1,16 @@
+import './Dashboard.scss';
+import { useEffect, useState } from 'react';
+import { ToolsHeader } from './components';
+import { DolarHeader } from './components/dolarHeader/DolarHeader';
 export const Dashboard = () => {
-	return <div>Dashboard</div>;
+	useEffect(() => {
+		console.log('efect');
+	}, []);
+
+	return (
+		<section className='Dashboard'>
+			<DolarHeader />
+			<ToolsHeader />
+		</section>
+	);
 };

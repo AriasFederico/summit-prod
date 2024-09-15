@@ -14,13 +14,13 @@
   }
 
   &-logo {
-    color: map-get($colors, 'black');
+    color: map-get($colors, 'blue');
     font-size: 2rem;
     user-select: none;
   }
 
   &-svg-logo {
-    color: map-get($colors, 'black');
+    color: map-get($colors, 'blue');
     width: 2.5rem;
     height: 2.5rem;
   }

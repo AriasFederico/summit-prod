@@ -19,7 +19,7 @@ export const NavPcLogged = ({ user }) => {
 	return (
 		<nav className='NavPcLogged'>
 			<Logo className={'NavPcLogged-logo'} svg={'NavPcLogged-svg-logo'} />
-			<div className='NavPcLogged-menu'>
+			{/* <div className='NavPcLogged-menu'>
 				<NavLink
 					to={'#'}
 					className={({ isActive }) =>
@@ -36,7 +36,7 @@ export const NavPcLogged = ({ user }) => {
 				>
 					Lista de productos
 				</NavLink>
-			</div>
+			</div> */}
 			<User
 				className={'NavPcLogged-user'}
 				event={() => setMenuActive(!menuActive)}

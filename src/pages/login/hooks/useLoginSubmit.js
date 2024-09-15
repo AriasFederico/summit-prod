@@ -22,7 +22,7 @@ export const useLoginSubmit = (values) => {
 		try {
 			await signInWithEmailAndPassword(auth, values.email, values.password);
 			setLogged(true);
-			redirect('/control');
+			redirect('/control/calculators');
 
 			console.log('logged: ', values);
 		} catch (error) {

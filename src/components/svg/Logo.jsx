@@ -8,7 +8,7 @@ export const Logo = ({ className, svg, click }) => {
 		<Link
 			className={`Logo ${className}`}
 			onClick={click}
-			to={logged ? '/control' : '/'}
+			to={logged ? '/control/calculators' : '/'}
 		>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'

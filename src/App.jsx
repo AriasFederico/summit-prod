@@ -8,7 +8,9 @@ import { Header } from './header/Header';
 import { Home } from './pages/home/Home';
 import { Login } from './pages/login/Login';
 import { PrivateRoute } from './pages/private/PrivateRoute';
+import { Calculators } from './pages/private/calculators/Calculators';
 import { Dashboard } from './pages/private/dashboard/Dashboard';
+import { Products } from './pages/private/products/Products';
 import { Register } from './pages/register/Register';
 
 function App() {
@@ -38,7 +40,8 @@ function App() {
 						</PrivateRoute>
 					}
 				>
-					{/*  */}
+					<Route path='calculators' element={<Calculators />}></Route>
+					<Route path='products' element={<Products />}></Route>
 				</Route>
 			</Routes>
 		</BrowserRouter>
