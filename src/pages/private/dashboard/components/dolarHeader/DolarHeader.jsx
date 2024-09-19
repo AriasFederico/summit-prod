@@ -7,14 +7,16 @@ import './DolarHeader.scss';
 export const DolarHeader = () => {
 	const [dolarValue, setDolarValue] = useState(null);
 	const [dolarBlueValue, setDolarBlueValue] = useState(null);
+	const [mayoristaValue, setMayoristeValue] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const { dolarData, dolarBlueData } = await getDolarData();
+				const { dolarData, dolarBlueData, dolarMay } = await getDolarData();
 
 				setDolarBlueValue(dolarBlueData);
 				setDolarValue(dolarData);
+				setMayoristeValue(dolarMay);
 			} catch (error) {
 				console.log(error);
 			}
@@ -26,6 +28,7 @@ export const DolarHeader = () => {
 	const arrayDolarData = [
 		{ id: 'dolarDataOficial', data: dolarValue },
 		{ id: 'dolarBlue', data: dolarBlueValue },
+		{ id: 'dolarMayorista', data: mayoristaValue },
 	];
 
 	return (

@@ -22,13 +22,6 @@ export const ToolsHeader = () => {
 					/>
 				</div>
 			</div>
-
-			<div className='ToolsHeader-products'>
-				<Tools nameTool={'Mesa de trabajo'} />
-				<div className='ToolsHeader-outlet'>
-					<Outlet />
-				</div>
-			</div>
 		</div>
 	);
 };

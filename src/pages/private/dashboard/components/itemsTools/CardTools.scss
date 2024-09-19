@@ -10,7 +10,6 @@
   padding: .7rem 2rem;
   font-size: .9rem;
   color: gray;
-  border-radius: 1rem;
   transition: all .3s;
 
   &-active {
@@ -22,7 +21,6 @@
     font-size: .9rem;
     color: map-get($colors, 'purple');
     transition: all .3s;
-    border-radius: .2rem;
 
   }
 
