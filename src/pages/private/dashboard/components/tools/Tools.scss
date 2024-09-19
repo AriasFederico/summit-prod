@@ -6,12 +6,9 @@
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-  // color: map-get($colors, 'green');
+  user-select: none;
 
   &-p {
-    // color: map-get($colors, 'green');
     font-weight: 500;
   }
-
-  // &-arrow {}
 }

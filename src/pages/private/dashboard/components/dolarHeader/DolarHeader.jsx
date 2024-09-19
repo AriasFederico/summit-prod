@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getDolarData } from '../../services/getDolar';
+import { Tools } from '../tools/Tools';
 import { Dolar } from './dolarCard/Dolar';
+import './DolarHeader.scss';
+
 export const DolarHeader = () => {
 	const [dolarValue, setDolarValue] = useState(null);
 	const [dolarBlueValue, setDolarBlueValue] = useState(null);
@@ -20,25 +23,19 @@ export const DolarHeader = () => {
 		fetchData();
 	}, []);
 
-	return (
-		<div className='DolarHeader'>
-			{dolarValue && (
-				<Dolar
-					moneda={dolarValue.moneda}
-					nombre={dolarValue.casa}
-					venta={dolarValue.venta}
-					compra={dolarValue.compra}
-				/>
-			)}
+	const arrayDolarData = [
+		{ id: 'dolarDataOficial', data: dolarValue },
+		{ id: 'dolarBlue', data: dolarBlueValue },
+	];
 
-			{dolarBlueValue && (
-				<Dolar
-					moneda={dolarBlueValue.moneda}
-					nombre={dolarBlueValue.casa}
-					venta={dolarBlueValue.venta}
-					compra={dolarBlueValue.compra}
-				/>
-			)}
+	return (
+		<div className='DolarHeader' data-aos={'zoom-in'}>
+			{/* <Tools nameTool={'Valor del dolar hoy'} /> */}
+			<div className='DolarHeader-fx'>
+				{arrayDolarData.map(({ id, data }) => (
+					<Dolar key={id} data={data} />
+				))}
+			</div>
 		</div>
 	);
 };

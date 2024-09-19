@@ -1,3 +1,29 @@
+@import '../../../../../../sass/variables';
+
 .Dolar {
-  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  // border: 1px solid rgb(207, 205, 205);
+  color: white;
+
+  &-span {
+    text-align: center;
+    font-weight: 500;
+  }
+
+  &-ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  &-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+  }
+
 }

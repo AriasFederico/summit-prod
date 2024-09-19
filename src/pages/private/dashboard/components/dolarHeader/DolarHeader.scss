@@ -1,0 +1,16 @@
+@import '../../../../../sass/variables';
+@import '../../../../../sass/mixins';
+
+
+.DolarHeader {
+  background-color: map-get($colors, 'purple');
+  padding: 2rem;
+  margin: 2rem 0 3rem;
+
+  &-fx {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 3rem;
+  }
+}
