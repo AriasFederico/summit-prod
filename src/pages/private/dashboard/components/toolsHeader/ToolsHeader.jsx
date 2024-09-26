@@ -8,16 +8,21 @@ export const ToolsHeader = () => {
 	return (
 		<div className='ToolsHeader'>
 			<div className='ToolsHeader-calculator'>
-				<Tools nameTool={'Herramientas'} />
+				<Tools nameTool={'HERRAMIENTAS'} />
 				<div className='ToolsHeader-cards'>
 					<CardTool
-						name={'Calculadoras Summit'}
+						name={'CALCULADORAS SUMMIT'}
 						svg={<Calculator className={'ToolsHeader-svg'} />}
 						redirect={'calculators'}
 					/>
 					<CardTool
-						name={'Lista de productos'}
+						name={'PRODUCTOS'}
 						redirect={'products'}
+						svg={<Lists className={'ToolsHeader-svg'} />}
+					/>
+					<CardTool
+						name={'NOVEDADES'}
+						redirect={'novedades'}
 						svg={<Lists className={'ToolsHeader-svg'} />}
 					/>
 				</div>

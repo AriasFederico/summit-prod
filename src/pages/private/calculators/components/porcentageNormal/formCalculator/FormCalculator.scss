@@ -1,0 +1,13 @@
+.FormCalculator {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &-margin {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+}

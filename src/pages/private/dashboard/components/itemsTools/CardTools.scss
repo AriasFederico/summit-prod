@@ -6,22 +6,24 @@
   display: flex;
   align-items: center;
   gap: .5rem;
-  border: 2px solid rgb(185, 184, 184);
-  padding: .7rem 2rem;
+  border: 2px solid rgba(185, 184, 184, 0.705);
+  padding: 1rem 2rem;
   font-size: .9rem;
-  color: gray;
+  color: rgba(185, 184, 184, 0.705);
   transition: all .3s;
 
   &-active {
     display: flex;
     align-items: center;
     gap: .5rem;
-    border: 2px solid map-get($colors, 'purple');
-    padding: .7rem 2rem;
+    border: 2px solid map-get($colors, 'black');
+    padding: 1rem 2rem;
     font-size: .9rem;
-    color: map-get($colors, 'purple');
-    transition: all .3s;
+    color: map-get($colors, 'black');
+  }
 
+  &-title {
+    // font-size: 1.1rem;
   }
 
   // cambiar el link por NavLink para que al hacer click en el viewport no desaparezca el active

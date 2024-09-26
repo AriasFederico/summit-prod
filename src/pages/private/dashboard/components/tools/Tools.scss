@@ -7,8 +7,11 @@
   gap: 1rem;
   margin-bottom: 1rem;
   user-select: none;
+  color: map-get($colors, 'purple');
 
   &-p {
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: 800;
   }
+
 }

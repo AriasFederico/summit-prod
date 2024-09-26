@@ -14,7 +14,7 @@ import { Products } from './pages/private/products/Products';
 import { Register } from './pages/register/Register';
 
 function App() {
-	const { logged, user } = useContext(GlobalContext);
+	const { logged } = useContext(GlobalContext);
 	useEffect(() => {
 		Aos.init();
 	}, []);
@@ -40,8 +40,8 @@ function App() {
 						</PrivateRoute>
 					}
 				>
-					<Route path='calculators' element={<Calculators />}></Route>
-					<Route path='products' element={<Products />}></Route>
+					<Route path='calculators' element={<Calculators />} />
+					<Route path='products' element={<Products />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

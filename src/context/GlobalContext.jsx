@@ -22,6 +22,25 @@ export const GlobalProvider = ({ children }) => {
 		return () => unsuscribe();
 	}, []);
 
+	const bbddCalculators = [
+		{
+			calculatorNormal: [
+				{
+					title: 'Calculadora para productos con volúmen o cantidad',
+					description:
+						'Obtené el precio total y por unidad de peso o cantidad fácilmente.',
+				},
+			],
+			calculatorAumento: [
+				{
+					title: 'Calculadora para productos con volúmen o cantidad',
+					description:
+						'Obtené el precio total y por unidad de peso o cantidad fácilmente.',
+				},
+			],
+		},
+	];
+
 	const handleSignOut = async () => {
 		const auth = getAuth();
 		try {
@@ -43,6 +62,7 @@ export const GlobalProvider = ({ children }) => {
 				signOut: handleSignOut,
 				loading,
 				setLoading,
+				bbddCalculators,
 			}}
 		>
 			{children}
