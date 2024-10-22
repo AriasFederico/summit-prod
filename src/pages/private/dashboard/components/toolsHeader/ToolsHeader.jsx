@@ -20,11 +20,11 @@ export const ToolsHeader = () => {
 						redirect={'products'}
 						svg={<Lists className={'ToolsHeader-svg'} />}
 					/>
-					<CardTool
+					{/* <CardTool
 						name={'NOVEDADES'}
 						redirect={'novedades'}
 						svg={<Lists className={'ToolsHeader-svg'} />}
-					/>
+					/> */}
 				</div>
 			</div>
 		</div>

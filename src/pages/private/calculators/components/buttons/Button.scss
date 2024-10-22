@@ -1,0 +1,16 @@
+@import '../../../../../sass/mixins';
+@import '../../../../../sass/variables';
+
+.Button {
+  background-color: map-get($colors, 'blue');
+  color: white;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: map-get($colors, 'purple');
+  }
+}

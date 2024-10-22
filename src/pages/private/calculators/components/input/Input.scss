@@ -1,4 +1,14 @@
+@import '../../../../../sass/variables';
+
 .Input {
-  padding: 1rem;
+  padding: 1rem .8rem;
   width: 100%;
+  outline: none;
+  border: none;
+  border: 1px solid gray;
+  border-radius: map-get($radius, 'item');
+
+  &:focus {
+    border-color: rgb(25, 165, 25);
+  }
 }

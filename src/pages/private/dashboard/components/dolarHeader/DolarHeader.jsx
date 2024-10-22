@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { getDolarData } from '../../services/getDolar';
-import { Tools } from '../tools/Tools';
-import { Dolar } from './dolarCard/Dolar';
-import './DolarHeader.scss';
+import { useEffect, useState } from "react";
+import { getDolarData } from "../../services/getDolar";
+import { Tools } from "../tools/Tools";
+import { Dolar } from "./dolarCard/Dolar";
+import "./DolarHeader.scss";
 
 export const DolarHeader = () => {
 	const [dolarValue, setDolarValue] = useState(null);
@@ -26,15 +26,15 @@ export const DolarHeader = () => {
 	}, []);
 
 	const arrayDolarData = [
-		{ id: 'dolarDataOficial', data: dolarValue },
-		{ id: 'dolarBlue', data: dolarBlueValue },
-		{ id: 'dolarMayorista', data: mayoristaValue },
+		{ id: "dolarDataOficial", data: dolarValue },
+		{ id: "dolarBlue", data: dolarBlueValue },
+		{ id: "dolarMayorista", data: mayoristaValue },
 	];
 
 	return (
-		<div className='DolarHeader' data-aos={'zoom-in'}>
+		<div className="DolarHeader" data-aos={"zoom-in"}>
 			{/* <Tools nameTool={'Valor del dolar hoy'} /> */}
-			<div className='DolarHeader-fx'>
+			<div className="DolarHeader-fx">
 				{arrayDolarData.map(({ id, data }) => (
 					<Dolar key={id} data={data} />
 				))}

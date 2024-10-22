@@ -4,10 +4,14 @@
 .Tools {
   display: flex;
   align-items: center;
-  gap: 1rem;
   margin-bottom: 1rem;
   user-select: none;
   color: map-get($colors, 'purple');
+
+  &-arrow {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
 
   &-p {
     font-size: 1.1rem;

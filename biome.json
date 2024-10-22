@@ -12,6 +12,9 @@
 				"useButtonType": "off",
 				"noSvgWithoutTitle": "off",
 				"useKeyWithClickEvents": "off"
+			},
+			"style": {
+				"useNumberNamespace"
 			}
 		}
 	},

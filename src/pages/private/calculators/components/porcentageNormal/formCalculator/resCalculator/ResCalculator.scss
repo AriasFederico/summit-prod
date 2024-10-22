@@ -1,0 +1,27 @@
+.ResCalculator {
+  border: 1px solid gray;
+  margin-top: 2rem;
+  padding: 2.5rem 1rem;
+  background-color: white;
+
+  &-cont {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+  }
+
+  &-res {
+    font-size: 1.8rem;
+    color: green;
+    letter-spacing: 2px;
+  }
+
+  &-unity-cont,
+  &-cant-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.3rem;
+  }
+
+}

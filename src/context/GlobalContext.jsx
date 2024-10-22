@@ -1,5 +1,5 @@
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { createContext, useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
@@ -26,16 +26,18 @@ export const GlobalProvider = ({ children }) => {
 		{
 			calculatorNormal: [
 				{
-					title: 'Calculadora para productos con volúmen o cantidad',
+					title: "Calculadora para productos con volúmen o cantidad",
 					description:
-						'Obtené el precio total y por unidad de peso o cantidad fácilmente.',
+						"Obtené el precio total y por unidad de peso o cantidad fácilmente.",
 				},
 			],
-			calculatorAumento: [
+		},
+
+		{
+			calculatorSingle: [
 				{
-					title: 'Calculadora para productos con volúmen o cantidad',
-					description:
-						'Obtené el precio total y por unidad de peso o cantidad fácilmente.',
+					title: "Calculadora para productos individuales",
+					description: "Obtené el precio por producto rápidamente",
 				},
 			],
 		},
@@ -48,7 +50,7 @@ export const GlobalProvider = ({ children }) => {
 			setUser(null);
 			setLogged(false);
 		} catch (error) {
-			console.error('Error al cerrar sesión:', error);
+			console.error("Error al cerrar sesión:", error);
 		}
 	};
 

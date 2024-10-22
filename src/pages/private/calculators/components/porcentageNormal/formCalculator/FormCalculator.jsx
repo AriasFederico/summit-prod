@@ -1,42 +1,82 @@
-import { Input } from '../../input/Input';
-import './FormCalculator.scss';
+import { Button } from "../../components.js";
+import { ButtonReset } from "../../buttons/reset/ButtonReset.jsx";
+import { Input } from "../../input/Input";
+import { ResCalculator } from "./resCalculator/ResCalculator.jsx";
+import { useFormCalculator } from "../hooks/useFormCalculator.js";
+import "./FormCalculator.scss";
+
 export const FormCalculator = () => {
+	const {
+		handleSubmit,
+		handleChange,
+		markedCant,
+		markedUnity,
+		price,
+		quantity,
+		handleChangeName,
+		inputName,
+		finalValues,
+		clearForm,
+	} = useFormCalculator();
+
+	const { valueCant, valueName, valueUnity } = finalValues;
+
 	return (
-		<form className='FormCalculator'>
-			<div className='FormCalculator-margin'>
-				<Input
-					type={'number'}
-					placeholder={'Ganancia por cantidad total (%)'}
-					change={''}
-					name={'name'}
-				/>
-				<Input
-					type={'number'}
-					placeholder={'Ganancia por unidad (%)'}
-					change={''}
-					name={'name'}
-				/>
+		<form className="FormCalculator" onSubmit={handleSubmit}>
+			<div className="FormCalculator-marked">
+				<div className="FormCalculator-marked-total">
+					<p>Marcado por cantidad total</p>
+					<Input
+						type={"number"}
+						placeholder={"Marcado ( % )"}
+						className={"FormCalculator-marked-input"}
+						name={"markedCant"}
+						valueInput={markedCant}
+						change={handleChange}
+					/>
+				</div>
+				<div className="FormCalculator-marked-unity">
+					<p>Marcado por unidad</p>
+					<Input
+						type={"number"}
+						placeholder={"Marcado ( % )"}
+						className={"FormCalculator-marked-input"}
+						name={"markedUnity"}
+						valueInput={markedUnity}
+						change={handleChange}
+					/>
+				</div>
 			</div>
 
 			<Input
-				type={'number'}
-				placeholder={'Valor del producto ($)'}
-				change={''}
-				name={'name'}
+				type={"text"}
+				placeholder={"Nombre del producto"}
+				change={handleChangeName}
+				name={"name"}
+				valueInput={inputName}
 			/>
 			<Input
-				type={'number'}
-				placeholder={'Cantidad total de producto'}
-				change={''}
-				name={'name'}
+				type={"number"}
+				placeholder={"Costo del producto ( $ )"}
+				name={"price"}
+				valueInput={price}
+				change={handleChange}
 			/>
+
 			<Input
-				type={'text'}
-				placeholder={'Nombre del producto'}
-				change={''}
-				name={'name'}
+				type={"number"}
+				placeholder={"Cantidad/Volumen total (ej: Kg)"}
+				name={"quantity"}
+				valueInput={quantity}
+				change={handleChange}
 			/>
-			{/* boton predefinido */}
+
+			<Button value={"CALCULAR"} type={"submit"} />
+			<ButtonReset value={"Resetear"} onClick={clearForm} />
+			<ResCalculator cant={valueCant} name={valueName} unity={valueUnity} />
 		</form>
 	);
 };
+
+// guardar en localSorage el valor de los marcados
+// poner el valor de los datos del producto en mayuscula

@@ -4,6 +4,7 @@
 
 .DolarHeader {
   background-color: map-get($colors, 'purple');
+  border-radius: map-get($radius, 'item');
   padding: 2rem;
   margin: 2rem 0 3rem;
 

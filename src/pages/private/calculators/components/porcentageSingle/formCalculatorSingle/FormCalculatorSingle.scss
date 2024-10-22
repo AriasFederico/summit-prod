@@ -1,4 +1,4 @@
-.FormCalculator {
+.FormCalculatorSingle {
   background-color: rgb(247, 246, 246);
   padding: 2rem;
   border: 1px solid rgb(201, 198, 198);
@@ -6,17 +6,12 @@
   flex-direction: column;
   gap: .3rem;
 
-  &-marked {
+  &-marked-total {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 1rem;
     margin: 0 auto 2.5rem;
   }
 
-  &-marked-total,
-  &-marked-unity {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-  }
+
 }

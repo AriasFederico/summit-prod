@@ -28,7 +28,7 @@ export const ComponentBanner = () => {
 				span={'CONTROL TOTAL DE LOS PRECIOS'}
 				title={'Calculadoras porcentuales'}
 				description={
-					'Calcula los precios de forma sencilla y eficiente. Utiliza nuestras calculadoras para mejorar tus estrategias de precios, aplicando porcentajes de ganancia y descuentos de forma precisa. En nuestra plataforma, encontrarás cuatro calculadoras especializadas: una para productos individuales, otra para aplicar aumentos y descuentos, y dos más para gestionar precios de productos por kilo o volumen. Todo diseñado para adaptarse a tus necesidades y facilitar la gestión de tu negocio.'
+					'Calcula los precios de forma sencilla y eficiente. Utiliza nuestras calculadoras para mejorar tus estrategias de precios, aplicando porcentajes de ganancia de forma precisa. En nuestra plataforma, encontrarás dos calculadoras especializadas: una para productos individuales y otra para gestionar precios de productos por cantidad o volumen. Todo está diseñado para adaptarse a tus necesidades y facilitar la gestión de tu negocio.'
 				}
 				banner={calculatorBanner}
 			/>

@@ -2,7 +2,7 @@
 @import '../../../../sass/variables';
 
 .BannerTemplate {
-  width: 95%;
+  width: 100%;
   max-width: 90rem;
   margin: 0 auto 5rem;
   display: flex;
@@ -10,6 +10,7 @@
   gap: 3rem;
   text-align: center;
   color: map-get($colors, 'black');
+  padding: 0 2rem;
 
   @include respond-to('large') {
     flex-direction: row-reverse;
@@ -67,21 +68,19 @@
 
   &-img {
     width: 100%;
-    max-height: 25rem;
     object-fit: cover;
     object-position: top;
     border-radius: map-get($radius, 'item');
     box-shadow: -5px 8px 20px 0px rgba(128, 128, 128, 0.2509803922);
-    border: 1px solid gray;
 
 
     @include respond-to('medium') {
-      width: 75%;
+      // width: 75%;
     }
 
     @include respond-to('large') {
       width: 100%;
-      max-height: 25rem;
+      // max-height: 25rem;
     }
   }
 }

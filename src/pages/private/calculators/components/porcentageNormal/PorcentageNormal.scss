@@ -1,20 +1,7 @@
+@import '../../../../../sass/_variables.scss';
+@import '../../../../../sass/_mixins.scss';
+
 .PorcentageNormal {
-
-  &-cont {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    gap: 2rem;
-  }
-
-  &-calculator {
-    background-color: rgba(128, 128, 128, 0.274);
-    border: 1px solid gray;
-    width: 50%;
-  }
-
-  &-res {
-    width: 50%;
-  }
-
+  display: flex;
+  flex-direction: column;
 }
