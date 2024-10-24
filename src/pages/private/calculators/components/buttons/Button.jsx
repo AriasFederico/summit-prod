@@ -1,7 +1,7 @@
-import './Button.scss';
-export const Button = ({ value, type }) => {
+import "./Button.scss";
+export const Button = ({ value, type, click }) => {
 	return (
-		<button className='Button' type={type}>
+		<button className="Button" type={type} onClick={click}>
 			{value}
 		</button>
 	);

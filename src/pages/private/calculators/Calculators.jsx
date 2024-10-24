@@ -6,6 +6,7 @@ export const Calculators = () => {
 		<div className="Calculators">
 			<PorcentageNormal />
 			<PorcentageSingle />
+			{/* footer */}
 		</div>
 	);
 };

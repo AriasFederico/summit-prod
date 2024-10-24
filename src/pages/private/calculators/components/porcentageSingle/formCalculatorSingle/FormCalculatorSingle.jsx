@@ -3,31 +3,55 @@ import { Input } from "../../input/Input";
 import { Button } from "../../components";
 import { ButtonReset } from "../../buttons/reset/ButtonReset";
 import { ResCalculatorSingle } from "./ResCalculatorSingle/ResCalculatorSingle";
+import { useFormCalculatorSingle } from "../hooks/useFormCalculatorSingle";
 
 export const FormCalculatorSingle = () => {
+	const {
+		handleChange,
+		handleChangeName,
+		handleSubmit,
+		clearForm,
+		inputName,
+		inputsValues,
+		finalValues,
+	} = useFormCalculatorSingle();
+
+	const { valueProduct } = finalValues;
+	const { markedProduct, price } = inputsValues;
+
 	return (
-		<form className="FormCalculatorSingle">
+		<form className="FormCalculatorSingle" onSubmit={handleSubmit}>
 			<div className="FormCalculatorSingle-marked-total">
 				<p>Marcado del producto</p>
 				<Input
 					type={"number"}
 					placeholder={"Marcado ( % )"}
-					name={"markedCant"}
+					name={"markedProduct"}
+					valueInput={markedProduct}
+					change={handleChange}
 				/>
 			</div>
 
-			<Input type={"text"} placeholder={"Nombre del producto"} name={"name"} />
+			<Input
+				type={"text"}
+				placeholder={"Nombre del producto"}
+				name={"name"}
+				valueInput={inputName}
+				change={handleChangeName}
+			/>
 
 			<Input
 				type={"number"}
 				placeholder={"Costo del producto ( $ )"}
-				name={"markedCant"}
+				name={"price"}
+				valueInput={price}
+				change={handleChange}
 			/>
 
 			<Button value={"CALCULAR"} type={"submit"} />
-			<ButtonReset value={"Resetear"} onClick={""} />
+			<ButtonReset value={"Resetear"} onClick={clearForm} />
 
-			<ResCalculatorSingle />
+			<ResCalculatorSingle cant={valueProduct} />
 		</form>
 	);
 };

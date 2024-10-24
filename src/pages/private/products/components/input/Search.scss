@@ -1,14 +1,10 @@
 @import '../../../../../sass/variables';
 
-.Input {
+.Search {
   padding: 1rem 2rem;
-  width: 100%;
+  width: 40%;
   outline: none;
   border: none;
   border: 1px solid rgb(207, 207, 207);
   border-radius: map-get($radius, 'item');
-
-  &:focus {
-    border-color: rgb(25, 165, 25);
-  }
 }

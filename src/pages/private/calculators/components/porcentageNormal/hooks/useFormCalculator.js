@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const useFormCalculator = () => {
-	// estados y manejos de estados de los margenes
+	// estados y manejos de estados de los margenes y el precio
 	const [inputsValues, setInputsValues] = useState({
 		markedCant: localStorage.getItem("markedCant") || "",
 		markedUnity: localStorage.getItem("markedUnity") || "",
@@ -61,7 +61,7 @@ export const useFormCalculator = () => {
 		valueUnity: "",
 	});
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (price === "") return;
 		const { priceCant, priceUnity } = calculatePorcentage(

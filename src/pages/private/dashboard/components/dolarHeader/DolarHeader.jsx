@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getDolarData } from "../../services/getDolar";
-import { Tools } from "../tools/Tools";
 import { Dolar } from "./dolarCard/Dolar";
 import "./DolarHeader.scss";
 
@@ -21,7 +20,6 @@ export const DolarHeader = () => {
 				console.log(error);
 			}
 		};
-		console.log(dolarBlueValue, dolarValue);
 		fetchData();
 	}, []);
 

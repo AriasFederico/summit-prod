@@ -1,9 +1,7 @@
-import { useFormCalculator } from "../../hooks/useFormCalculator.js";
 import { Button } from "../../../buttons/Button.jsx";
 import "./ResCalculator.scss";
 
 export const ResCalculator = ({ name, cant, unity }) => {
-	const { resValue } = useFormCalculator();
 	return (
 		<div className="ResCalculator">
 			<div className="ResCalculator-cont">

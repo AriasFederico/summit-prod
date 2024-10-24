@@ -2,7 +2,7 @@ import { Button } from "../../../components";
 export const ResCalculatorSingle = ({ cant }) => {
 	return (
 		<div className="ResCalculator">
-			<div className="ResCalculator-cant-cont">
+			<div className="ResCalculator-cont-product">
 				<h4>TU PRECIO POR CANTIDAD TOTAL</h4>
 				<p className="ResCalculator-res">{cant ? `$ ${cant}` : "-"}</p>{" "}
 			</div>
