@@ -17,6 +17,8 @@ export const FormCalculator = () => {
 		inputName,
 		finalValues,
 		clearForm,
+		addData,
+		list,
 	} = useFormCalculator();
 
 	const { valueCant, valueName, valueUnity } = finalValues;
@@ -73,7 +75,12 @@ export const FormCalculator = () => {
 
 			<Button value={"CALCULAR"} type={"submit"} />
 			<ButtonReset value={"Resetear"} onClick={clearForm} />
-			<ResCalculator cant={valueCant} name={valueName} unity={valueUnity} />
+			<ResCalculator
+				cant={valueCant}
+				name={valueName}
+				unity={valueUnity}
+				event={addData}
+			/>
 		</form>
 	);
 };

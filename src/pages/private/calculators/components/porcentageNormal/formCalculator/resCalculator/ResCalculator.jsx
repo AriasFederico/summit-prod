@@ -1,7 +1,7 @@
 import { Button } from "../../../buttons/Button.jsx";
 import "./ResCalculator.scss";
 
-export const ResCalculator = ({ name, cant, unity }) => {
+export const ResCalculator = ({ name, cant, unity, event }) => {
 	return (
 		<div className="ResCalculator">
 			<div className="ResCalculator-cont">
@@ -14,7 +14,10 @@ export const ResCalculator = ({ name, cant, unity }) => {
 					<p className="ResCalculator-res">{unity ? `$ ${unity}` : "-"}</p>
 				</div>
 			</div>
-			<Button value={"AGREGAR A MIS PRODUCTOS"} />
+			<Button
+				value={"AGREGAR A MIS PRODUCTOS"}
+				click={() => event({ name, cant, unity })}
+			/>
 		</div>
 	);
 };

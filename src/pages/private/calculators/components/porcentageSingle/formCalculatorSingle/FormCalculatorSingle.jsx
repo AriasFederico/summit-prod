@@ -14,6 +14,7 @@ export const FormCalculatorSingle = () => {
 		inputName,
 		inputsValues,
 		finalValues,
+		addData,
 	} = useFormCalculatorSingle();
 
 	const { valueProduct } = finalValues;
@@ -51,7 +52,7 @@ export const FormCalculatorSingle = () => {
 			<Button value={"CALCULAR"} type={"submit"} />
 			<ButtonReset value={"Resetear"} onClick={clearForm} />
 
-			<ResCalculatorSingle cant={valueProduct} />
+			<ResCalculatorSingle cant={valueProduct} event={addData} />
 		</form>
 	);
 };

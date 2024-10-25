@@ -1,6 +1,21 @@
 import { useEffect, useState } from "react";
+import { appFirebase } from "../../../../../../services/firebase/credentials";
+import { useContext } from "react";
+import { GlobalContext } from "../../../../../../context/GlobalContext";
+import {
+	getFirestore,
+	collection,
+	addDoc,
+	getDocs,
+	doc,
+	deleteDoc,
+	getDoc,
+} from "firebase/firestore";
+
+const db = getFirestore(appFirebase);
 
 export const useFormCalculatorSingle = () => {
+	const { exit, setExit } = useContext(GlobalContext);
 	// estado y manejo de estados del margen y el precio
 	const [inputsValues, setInputsValues] = useState({
 		markedProduct: localStorage.getItem("markedProduct") || "",
@@ -47,7 +62,7 @@ export const useFormCalculatorSingle = () => {
 		valueProduct: "",
 	});
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (inputsValues.price === "") return;
 		const priceWithProductPercentage = calculatePercentageSingle(
@@ -60,6 +75,35 @@ export const useFormCalculatorSingle = () => {
 			valueName: inputName,
 			valueProduct: priceWithProductPercentage.toLocaleString("de-DE"),
 		});
+	};
+
+	const addData = async () => {
+		try {
+			const dataToAdd = {
+				name: finalValues.valueName, // Asegúrate de que esto no sea undefined
+				cant: finalValues.valueProduct, // Asegúrate de que esto sea un string válido
+			};
+			console.log("Datos a enviar: ", dataToAdd);
+
+			await addDoc(collection(db, "singleProducts"), dataToAdd);
+			setExit(true);
+
+			setTimeout(() => {
+				setExit(false);
+			}, 3000);
+
+			setFinalValues({
+				valueCant: "",
+				valueUnity: "",
+			});
+			clearForm();
+		} catch (error) {
+			console.error(
+				"Error al agregar el documento: ",
+				error.code,
+				error.message,
+			);
+		}
 	};
 
 	const clearForm = () => {
@@ -79,5 +123,6 @@ export const useFormCalculatorSingle = () => {
 		inputName,
 		inputsValues,
 		finalValues,
+		addData,
 	};
 };

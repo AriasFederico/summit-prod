@@ -1,0 +1,21 @@
+.Notify {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background-color: #2b644a;
+  padding: 1rem 2rem;
+  z-index: 9000;
+  position: fixed;
+  right: 3rem;
+
+
+  &-svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    color: white;
+  }
+
+  &-message {
+    color: white;
+  }
+}

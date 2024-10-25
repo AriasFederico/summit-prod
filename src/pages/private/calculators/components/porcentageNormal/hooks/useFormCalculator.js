@@ -1,6 +1,26 @@
 import { useState, useEffect } from "react";
+import { appFirebase } from "../../../../../../services/firebase/credentials";
+import { getAuth } from "firebase/auth";
+import { GlobalContext } from "../../../../../../context/GlobalContext";
+import { useContext } from "react";
+
+import {
+	getFirestore,
+	collection, // funcion que recibe db + (coleccion nombre ('products'))
+	addDoc, // para agregar un documento a la coleccion
+	getDocs,
+	doc,
+	deleteDoc,
+	getDoc,
+} from "firebase/firestore";
+
+const db = getFirestore(appFirebase);
 
 export const useFormCalculator = () => {
+	const { setExit } = useContext(GlobalContext);
+	const auth = getAuth();
+
+	const user = auth.currentUser;
 	// estados y manejos de estados de los margenes y el precio
 	const [inputsValues, setInputsValues] = useState({
 		markedCant: localStorage.getItem("markedCant") || "",
@@ -79,6 +99,44 @@ export const useFormCalculator = () => {
 		});
 	};
 
+	const addData = async () => {
+		try {
+			const auth = getAuth();
+			const user = auth.currentUser; // Asegúrate de obtener el usuario actualizado
+
+			if (!user) {
+				console.error("Usuario no autenticado");
+				return;
+			}
+			const dataToAdd = {
+				name: finalValues.valueName,
+				cant: finalValues.valueCant,
+				unity: finalValues.valueUnity,
+				usuarioId: user.uid,
+			};
+
+			await addDoc(collection(db, "products"), dataToAdd);
+
+			setExit(true);
+
+			setTimeout(() => {
+				setExit(false);
+			}, 3000);
+
+			setFinalValues({
+				valueCant: "",
+				valueUnity: "",
+			});
+			clearForm();
+		} catch (error) {
+			console.error(
+				"Error al agregar el documento: ",
+				error.code,
+				error.message,
+			);
+		}
+	};
+
 	const clearForm = () => {
 		setInputsValues({
 			...inputsValues,
@@ -100,5 +158,6 @@ export const useFormCalculator = () => {
 		handleChangeName,
 		finalValues,
 		clearForm,
+		addData,
 	};
 };
