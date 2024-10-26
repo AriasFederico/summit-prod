@@ -95,7 +95,7 @@ export const useFormCalculator = () => {
 			...finalValues,
 			valueName: inputName,
 			valueCant: priceCant.toLocaleString("de-DE"),
-			valueUnity: priceUnity.toLocaleString("de-DE"),
+			valueUnity: priceUnity.toFixed(0),
 		});
 	};
 
@@ -110,7 +110,8 @@ export const useFormCalculator = () => {
 			}
 			const dataToAdd = {
 				name: finalValues.valueName,
-				cant: finalValues.valueCant,
+				volume: inputsValues.quantity,
+				priceCant: finalValues.valueCant,
 				unity: finalValues.valueUnity,
 				usuarioId: user.uid,
 			};
@@ -123,10 +124,6 @@ export const useFormCalculator = () => {
 				setExit(false);
 			}, 3000);
 
-			setFinalValues({
-				valueCant: "",
-				valueUnity: "",
-			});
 			clearForm();
 		} catch (error) {
 			console.error(
