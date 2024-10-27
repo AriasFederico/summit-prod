@@ -6,7 +6,7 @@ import "./DolarHeader.scss";
 export const DolarHeader = () => {
 	const [dolarValue, setDolarValue] = useState(null);
 	const [dolarBlueValue, setDolarBlueValue] = useState(null);
-	const [mayoristaValue, setMayoristeValue] = useState(null);
+	const [mayoristeValue, setMayoristeValue] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -26,7 +26,6 @@ export const DolarHeader = () => {
 	const arrayDolarData = [
 		{ id: "dolarDataOficial", data: dolarValue },
 		{ id: "dolarBlue", data: dolarBlueValue },
-		{ id: "dolarMayorista", data: mayoristaValue },
 	];
 
 	return (

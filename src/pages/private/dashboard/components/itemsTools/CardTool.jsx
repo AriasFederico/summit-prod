@@ -3,9 +3,14 @@ import { NavLink } from "react-router-dom";
 
 export const CardTool = ({ name, svg, redirect }) => {
 	return (
-		<a href={redirect}>
+		<NavLink
+			to={redirect}
+			className={({ isActive }) =>
+				isActive ? "CardTools-active" : "CardTools"
+			}
+		>
 			{svg}
 			<span className="CardTools-title">{name}</span>
-		</a>
+		</NavLink>
 	);
 };

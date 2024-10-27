@@ -5,6 +5,6 @@
   width: 40%;
   outline: none;
   border: none;
-  border: 1px solid rgb(207, 207, 207);
+  border: 1px solid map-get($colors, 'black');
   border-radius: map-get($radius, 'item');
 }

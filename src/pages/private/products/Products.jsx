@@ -14,17 +14,17 @@ export const Products = () => {
 					<HeaderProducts title={"Lista de productos (cantidad / volumen)"} />
 					<Search placeholder={"Buscar productos"} />
 				</div>
+				<Table list={list} />
 			</div>
 
 			{/* tabla({props}) */}
 
-			<Table list={list} />
-
-			<div className="Products-list-single">
+			<div className="Products-list">
 				<div className="Products-header">
 					<HeaderProducts title={"Lista de productos indivuales"} />
 					<Search placeholder={"Buscar productos individuales"} />
 				</div>
+				<Table list={list} />
 			</div>
 		</div>
 	);

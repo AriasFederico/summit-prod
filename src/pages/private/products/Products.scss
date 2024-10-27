@@ -1,11 +1,19 @@
 .Products {
   height: 100vh;
-  padding: 2rem;
-
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
 
   &-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 }

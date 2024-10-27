@@ -2,9 +2,9 @@ export const getDolarData = async () => {
 	try {
 		const [dolarResponse, dolarBlueResponse, dolarMayorista] =
 			await Promise.all([
-				fetch('https://dolarapi.com/v1/dolares/oficial'),
-				fetch('https://dolarapi.com/v1/dolares/blue'),
-				fetch('https://dolarapi.com/v1/dolares/mayorista'),
+				fetch("https://dolarapi.com/v1/dolares/oficial"),
+				fetch("https://dolarapi.com/v1/dolares/blue"),
+				fetch("https://dolarapi.com/v1/dolares/mayorista"),
 			]);
 
 		const dolarData = await dolarResponse.json();
