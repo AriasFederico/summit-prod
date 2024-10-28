@@ -24,7 +24,6 @@ export const Products = () => {
 					<HeaderProducts title={"Lista de productos indivuales"} />
 					<Search placeholder={"Buscar productos individuales"} />
 				</div>
-				<Table list={list} />
 			</div>
 		</div>
 	);
