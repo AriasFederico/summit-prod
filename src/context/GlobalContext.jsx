@@ -1,15 +1,8 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { appFirebase } from "../services/firebase/credentials";
-import {
-	getFirestore,
-	collection,
-	getDocs,
-	query,
-	where,
-} from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
-const db = getFirestore(appFirebase);
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
@@ -45,36 +38,15 @@ export const GlobalProvider = ({ children }) => {
 			if (user) {
 				setUser(user.email);
 				setLogged(true);
-				await getList(user.uid); // Obtiene la lista para el usuario autenticado
 			} else {
 				setUser(null);
 				setLogged(false);
-				setList([]); // Limpiar la lista al cerrar sesión
 			}
 			setLoading(false); // Detener el loading después de verificar el usuario
 		});
 
 		return () => unsubscribe();
 	}, []);
-
-	const getList = async (uid) => {
-		setLoading(true); // Iniciar carga
-		try {
-			const q = query(
-				collection(db, "products"),
-				where("usuarioId", "==", uid),
-			);
-			const querySnapshot = await getDocs(q);
-			const docs = [];
-			querySnapshot.forEach((doc) => {
-				docs.push({ ...doc.data(), id: doc.id });
-			});
-			setList(docs);
-		} catch (error) {
-			console.log(error);
-		}
-		setLoading(false); // Detener carga después de obtener datos
-	};
 
 	const handleSignOut = async () => {
 		const auth = getAuth();
@@ -99,6 +71,7 @@ export const GlobalProvider = ({ children }) => {
 				setExit,
 				signOut: handleSignOut,
 				loading,
+				setLoading,
 				list,
 				bbddCalculators,
 			}}

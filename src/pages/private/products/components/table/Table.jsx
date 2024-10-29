@@ -1,11 +1,36 @@
 import "./Table.scss";
 import { GlobalContext } from "../../../../../context/GlobalContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Delete } from "../../../../../components/svg/Delete.jsx";
 import { Edit } from "../../../../../components/svg/Edit.jsx";
+import { collection, getDocs, getFirestore, doc } from "firebase/firestore";
+import { appFirebase } from "../../../../../services/firebase/credentials.js";
+
+const db = getFirestore(appFirebase);
 
 export const Table = () => {
-	const { list } = useContext(GlobalContext);
+	const [list, setList] = useState([]);
+
+	useEffect(() => {
+		const getList = async () => {
+			try {
+				const querySnapshot = await getDocs(collection(db, "products"));
+				const docs = [];
+
+				querySnapshot.forEach((doc) => {
+					docs.push({ ...doc.data(), id: doc.id });
+				});
+
+				setList(docs);
+				console.log("hola");
+			} catch (error) {
+				console.log(error);
+			}
+		};
+
+		getList();
+	}, [list]);
+
 	return (
 		<table className="Table">
 			<thead className="Table-thead">
