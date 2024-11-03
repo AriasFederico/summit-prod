@@ -1,10 +1,9 @@
 @import '../../../../../sass/variables';
 
 .Search {
-  padding: 1rem 2rem;
+  padding: .7rem 2rem;
   width: 40%;
   outline: none;
   border: none;
-  border: 1px solid map-get($colors, 'black');
-  border-radius: map-get($radius, 'item');
+  border: 1px solid gray;
 }

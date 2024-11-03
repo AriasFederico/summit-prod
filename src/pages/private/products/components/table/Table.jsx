@@ -1,40 +1,23 @@
-import "./Table.scss";
-import { GlobalContext } from "../../../../../context/GlobalContext";
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useGetList } from "../../hooks/useGetList";
 import { Delete } from "../../../../../components/svg/Delete.jsx";
 import { Edit } from "../../../../../components/svg/Edit.jsx";
-import { collection, getDocs, getFirestore, doc } from "firebase/firestore";
-import { appFirebase } from "../../../../../services/firebase/credentials.js";
-
-const db = getFirestore(appFirebase);
+import "./Table.scss";
+import { useFormCalculator } from "../../../calculators/components/porcentageNormal/hooks/useFormCalculator.js";
 
 export const Table = () => {
-	const [list, setList] = useState([]);
+	const { list, getList, handleDeleteItem } = useGetList();
+	const { setSubId } = useFormCalculator();
 
+	// Llama a getList cuando el componente se monte
 	useEffect(() => {
-		const getList = async () => {
-			try {
-				const querySnapshot = await getDocs(collection(db, "products"));
-				const docs = [];
-
-				querySnapshot.forEach((doc) => {
-					docs.push({ ...doc.data(), id: doc.id });
-				});
-
-				setList(docs);
-				console.log("hola");
-			} catch (error) {
-				console.log(error);
-			}
-		};
-
 		getList();
-	}, [list]);
+	}, []); // Dependencias vacías para ejecutar solo al montar
 
 	return (
-		<table className="Table">
+		<table className="Table-table">
 			<thead className="Table-thead">
-				<tr className="Table">
+				<tr>
 					<th className="Table-th">Nombre del producto</th>
 					<th className="Table-th">Cantidad</th>
 					<th className="Table-th">($) Cantidad</th>
@@ -42,21 +25,41 @@ export const Table = () => {
 					<th className="Table-th">Acción</th>
 				</tr>
 			</thead>
-			<tbody className="Table-tbody">
-				{list &&
-					list.map((item, index) => (
-						<tr key={index} className="Table-tr">
-							<td className="Table-td-name">{item.name.toUpperCase()}</td>
+			<tbody>
+				{list.length > 0 ? (
+					list.map((item) => (
+						<tr key={item.id} className="Table-tr">
+							<td>{item.name.toUpperCase()}</td>
 							<td>{item.volume}</td>
-							<td className="Table-td-cantValue">$ {item.priceCant}</td>
-							<td className="Table-td-unityValue">$ {item.unity}</td>
+							<td className="Table-td-price">$ {item.priceCant}</td>
+							<td className="Table-td-price">$ {item.unity}</td>
 							<td className="Table-td-action">
-								<Delete className={"Table-svg Table-delete"} />
-								<Edit className={"Table-svg Table-update"} />
+								<Delete
+									click={() => handleDeleteItem(item.id)}
+									className={"Table-delete"}
+								/>
+								<Edit
+									className={"Table-edit"}
+									click={() => setSubId(item.id)}
+								/>
 							</td>
 						</tr>
-					))}
+					))
+				) : (
+					<tr>
+						<td colSpan="5">No hay productos disponibles</td>
+					</tr>
+				)}
 			</tbody>
 		</table>
 	);
 };
+
+{
+	/* <div key={item.id}>
+<p>{item.name}</p>
+<p>{item.volume}</p>
+<p>{item.priceCant}</p>
+<p>{item.unity}</p>
+</div> */
+}

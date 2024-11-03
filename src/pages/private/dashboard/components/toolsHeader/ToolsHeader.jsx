@@ -3,8 +3,10 @@ import { CardTool } from "..";
 import "./ToolsHeader.scss";
 import { Outlet } from "react-router-dom";
 import { Calculator, Lists } from "../../../../../components/svg/index";
+import { useGetList } from "../../../products/hooks/useGetList";
 
 export const ToolsHeader = () => {
+	const { getList } = useGetList();
 	return (
 		<div className="ToolsHeader">
 			<div className="ToolsHeader-calculator">
@@ -19,6 +21,7 @@ export const ToolsHeader = () => {
 						name={"PRODUCTOS"}
 						redirect={"products"}
 						svg={<Lists className={"ToolsHeader-svg"} />}
+						event={() => getList()}
 					/>
 					{/* <CardTool
 						name={'NOVEDADES'}

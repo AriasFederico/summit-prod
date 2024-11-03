@@ -2,7 +2,7 @@ import "./Products.scss";
 import { Search } from "./components/input/Search";
 import { useContext } from "react";
 import { GlobalContext } from "../../../context/GlobalContext";
-import { Table } from "./components/table/Table";
+import { Table } from "../products/components/table/Table.jsx";
 export const Products = () => {
 	const { list } = useContext(GlobalContext);
 	// crear una media para que la lista pueda imprimirse !!!!!
@@ -16,8 +16,6 @@ export const Products = () => {
 				</div>
 				<Table list={list} />
 			</div>
-
-			{/* tabla({props}) */}
 
 			<div className="Products-list">
 				<div className="Products-header">
