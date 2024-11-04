@@ -5,6 +5,15 @@
   max-width: 90%;
   margin: 0 auto;
 
+  &-tdbody {
+    min-height: 1300px;
+  }
+
+  &-input {
+    padding: .6rem;
+    outline: none;
+  }
+
   &-table {
     // border-collapse: collapse;
     border-spacing: 0;
@@ -51,6 +60,8 @@
     justify-content: center;
     gap: 1rem;
   }
+
+
 }
 
 td {

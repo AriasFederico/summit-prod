@@ -1,5 +1,4 @@
 import "./Products.scss";
-import { Search } from "./components/input/Search";
 import { useContext } from "react";
 import { GlobalContext } from "../../../context/GlobalContext";
 import { Table } from "../products/components/table/Table.jsx";
@@ -10,18 +9,12 @@ export const Products = () => {
 	return (
 		<div className="Products">
 			<div className="Products-list">
-				<div className="Products-header">
-					<HeaderProducts title={"Lista de productos (cantidad / volumen)"} />
-					<Search placeholder={"Buscar productos"} />
-				</div>
+				<HeaderProducts title={"Lista de productos (cantidad / volumen)"} />
 				<Table list={list} />
 			</div>
 
 			<div className="Products-list">
-				<div className="Products-header">
-					<HeaderProducts title={"Lista de productos indivuales"} />
-					<Search placeholder={"Buscar productos individuales"} />
-				</div>
+				<HeaderProducts title={"Lista de productos indivuales"} />
 			</div>
 		</div>
 	);
