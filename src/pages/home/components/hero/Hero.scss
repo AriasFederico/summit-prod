@@ -89,7 +89,7 @@
     object-fit: cover;
     object-position: center;
     overflow: hidden;
-    border-radius: map-get($radius, 'item');
+    // border-radius: map-get($radius, 'item');
     box-shadow: 14px -6px 20px 0px #80808040;
 
     @include respond-to('large') {

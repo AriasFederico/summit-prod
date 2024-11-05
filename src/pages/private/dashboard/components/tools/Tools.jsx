@@ -1,11 +1,11 @@
-import './Tools.scss';
-import { ArrowDown } from '../../../../../components/svg/ArrowDown';
+import "./Tools.scss";
+import { ArrowRight } from "../../../../../components/svg/ArrowRight";
 
 export const Tools = ({ nameTool }) => {
 	return (
-		<div className='Tools'>
-			<ArrowDown className={'Tools-arrow'} />
-			<p className='Tools-p'>{nameTool}</p>
+		<div className="Tools">
+			<ArrowRight classname={"Tools-arrow"} />
+			<p className="Tools-p">{nameTool}</p>
 		</div>
 	);
 };

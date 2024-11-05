@@ -1,8 +1,8 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { GlobalContext } from '../../../context/GlobalContext';
-import { appFirebase } from '../../../services/firebase/credentials';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../../context/GlobalContext";
+import { appFirebase } from "../../../services/firebase/credentials";
 const auth = getAuth(appFirebase);
 
 export const useLoginSubmit = (values) => {
@@ -22,9 +22,9 @@ export const useLoginSubmit = (values) => {
 		try {
 			await signInWithEmailAndPassword(auth, values.email, values.password);
 			setLogged(true);
-			redirect('/control/calculators');
+			redirect("/control/calculators");
 
-			console.log('logged: ', values);
+			console.log("logged: ", values);
 		} catch (error) {
 			console.log(error);
 			showError();

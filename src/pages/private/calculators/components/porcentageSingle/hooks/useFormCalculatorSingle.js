@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { appFirebase } from "../../../../../../services/firebase/credentials";
 import { useContext } from "react";
 import { GlobalContext } from "../../../../../../context/GlobalContext";
+import { useNavigate } from "react-router-dom";
 import {
 	getFirestore,
 	collection,
@@ -12,9 +13,13 @@ import {
 	getDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { useGetListSingle } from "../../../../products/hooks/useGetListSingle";
 const db = getFirestore(appFirebase);
 
 export const useFormCalculatorSingle = () => {
+	const redirect = useNavigate();
+	const { handleDeleteItem } = useGetListSingle();
+	const [subId, setSubId] = useState("");
 	const { exit, setExit } = useContext(GlobalContext);
 	const auth = getAuth();
 
@@ -39,11 +44,14 @@ export const useFormCalculatorSingle = () => {
 
 	// estado y manejo de estado del nombre del producto
 
-	const [inputName, setInputName] = useState("");
+	const [inputNameSingle, setInputNameSingle] = useState(
+		localStorage.getItem("inputNameSingle") || "",
+	);
 
 	const handleChangeName = (e) => {
 		const valueName = e.target.value;
-		setInputName(valueName);
+		setInputNameSingle(valueName);
+		localStorage.setItem("inputNameSingle", valueName);
 	};
 
 	const calculatePercentageSingle = (markedProduct, price) => {
@@ -56,7 +64,7 @@ export const useFormCalculatorSingle = () => {
 
 		const priceWithProductPercentage = priceNumber * (1 + percentageProduct);
 
-		return priceWithProductPercentage;
+		return Math.ceil(priceWithProductPercentage);
 	};
 
 	const [finalValues, setFinalValues] = useState({
@@ -74,7 +82,7 @@ export const useFormCalculatorSingle = () => {
 
 		setFinalValues({
 			...finalValues,
-			valueName: inputName,
+			valueName: inputNameSingle,
 			valueProduct: priceWithProductPercentage.toLocaleString("de-DE"),
 		});
 	};
@@ -111,13 +119,38 @@ export const useFormCalculatorSingle = () => {
 		}
 	};
 
+	const getOne = async (id) => {
+		try {
+			const docRef = doc(db, "singleProducts", id);
+			const docSnap = await getDoc(docRef);
+			const data = docSnap.data();
+
+			if (data) {
+				console.log(data.name);
+				setInputNameSingle(data.name);
+				localStorage.setItem("inputNameSingle", data.name); // Guardar en `localStorage`
+				handleDeleteItem(id);
+				redirect("../calculators");
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	// Cargar el nombre del producto si `subId` cambia
+	useEffect(() => {
+		if (subId !== "") {
+			getOne(subId);
+		}
+	}, [subId]);
+
 	const clearForm = () => {
 		setInputsValues({
 			...inputsValues,
 			price: "",
 		});
 
-		setInputName("");
+		inputNameSingle("");
 	};
 
 	return {
@@ -125,9 +158,10 @@ export const useFormCalculatorSingle = () => {
 		handleChangeName,
 		handleSubmit,
 		clearForm,
-		inputName,
+		inputNameSingle,
 		inputsValues,
 		finalValues,
 		addData,
+		setSubId,
 	};
 };

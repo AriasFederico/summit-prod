@@ -11,7 +11,7 @@ export const FormCalculatorSingle = () => {
 		handleChangeName,
 		handleSubmit,
 		clearForm,
-		inputName,
+		inputNameSingle,
 		inputsValues,
 		finalValues,
 		addData,
@@ -37,7 +37,7 @@ export const FormCalculatorSingle = () => {
 				type={"text"}
 				placeholder={"Nombre del producto"}
 				name={"name"}
-				valueInput={inputName}
+				valueInput={inputNameSingle}
 				change={handleChangeName}
 			/>
 
