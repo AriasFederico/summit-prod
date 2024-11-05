@@ -10,7 +10,6 @@ export const GlobalProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [logged, setLogged] = useState(false);
 	const [exit, setExit] = useState(false); // Variable exit
-	const [list, setList] = useState([]);
 
 	const bbddCalculators = [
 		{
@@ -54,7 +53,6 @@ export const GlobalProvider = ({ children }) => {
 			await signOut(auth);
 			setUser(null);
 			setLogged(false);
-			setList([]); // Limpiar la lista al cerrar sesión
 		} catch (error) {
 			console.error("Error al cerrar sesión:", error);
 		}
@@ -72,7 +70,6 @@ export const GlobalProvider = ({ children }) => {
 				signOut: handleSignOut,
 				loading,
 				setLoading,
-				list,
 				bbddCalculators,
 			}}
 		>

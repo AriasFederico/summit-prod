@@ -72,8 +72,8 @@ export const useFormCalculator = () => {
 		const priceWithUnityPercentage = priceNumber * (1 + unityPercentage);
 		const pricePerUnit = priceWithUnityPercentage / quantity;
 		return {
-			priceCant: priceWithCantPercentage,
-			priceUnity: pricePerUnit,
+			priceCant: priceWithCantPercentage.toLocaleString("de-DE"),
+			priceUnity: Math.ceil(pricePerUnit),
 		};
 	};
 
@@ -97,8 +97,8 @@ export const useFormCalculator = () => {
 
 		setFinalValues({
 			valueName: inputName,
-			valueCant: priceCant.toLocaleString("de-DE"),
-			valueUnity: Math.ceil(priceUnity),
+			valueCant: priceCant,
+			valueUnity: priceUnity,
 		});
 	};
 
