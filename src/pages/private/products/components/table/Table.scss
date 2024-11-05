@@ -2,12 +2,6 @@
 @import '../../../../../sass/mixins';
 
 .Table {
-  max-width: 90%;
-  margin: 0 auto;
-
-  &-tdbody {
-    min-height: 1300px;
-  }
 
   &-input {
     padding: .6rem;
@@ -34,6 +28,7 @@
   &-td-price {
     color: green;
     letter-spacing: 2px;
+    font-weight: 500;
   }
 
   &-tr {

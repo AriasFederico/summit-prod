@@ -1,9 +1,18 @@
 @import '../../../../../sass/variables';
 
 .Search {
-  padding: .7rem 2rem;
-  width: 40%;
-  outline: none;
-  border: none;
-  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  &-svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &-input {
+    padding: .5rem 1rem;
+    outline: none;
+    width: 400px;
+  }
 }

@@ -18,7 +18,6 @@ export const FormCalculator = () => {
 		finalValues,
 		clearForm,
 		addData,
-		list,
 	} = useFormCalculator();
 
 	const { valueCant, valueName, valueUnity } = finalValues;

@@ -11,11 +11,13 @@ import {
 	deleteDoc,
 	getDoc,
 } from "firebase/firestore";
-
+import { getAuth } from "firebase/auth";
 const db = getFirestore(appFirebase);
 
 export const useFormCalculatorSingle = () => {
 	const { exit, setExit } = useContext(GlobalContext);
+	const auth = getAuth();
+
 	// estado y manejo de estados del margen y el precio
 	const [inputsValues, setInputsValues] = useState({
 		markedProduct: localStorage.getItem("markedProduct") || "",
@@ -79,9 +81,12 @@ export const useFormCalculatorSingle = () => {
 
 	const addData = async () => {
 		try {
+			const user = auth.currentUser;
+
 			const dataToAdd = {
 				name: finalValues.valueName, // Asegúrate de que esto no sea undefined
 				cant: finalValues.valueProduct, // Asegúrate de que esto sea un string válido
+				userId: user.uid,
 			};
 			console.log("Datos a enviar: ", dataToAdd);
 

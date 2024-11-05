@@ -10,7 +10,6 @@ import {
 	doc,
 } from "firebase/firestore";
 import { useGetList } from "../../../../products/hooks/useGetList";
-import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const db = getFirestore(appFirebase);
