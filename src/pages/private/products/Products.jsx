@@ -10,7 +10,7 @@ export const Products = () => {
 			</div>
 
 			<div className="Products-list">
-				<HeaderProducts title={"Lista de productos indivuales"} />
+				<HeaderProducts title={"Lista de productos individuales"} />
 				<TableSingle />
 			</div>
 		</div>
