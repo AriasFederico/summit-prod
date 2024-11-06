@@ -37,7 +37,7 @@ export const ComponentBanner = () => {
 				span={"OPTIMIZA TU GESTIÓN"}
 				title={"Gestiona tu lista de precios"}
 				description={
-					"Calcula los precios de forma sencilla y eficiente. Utiliza nuestras calculadoras para mejorar tus estrategias de precios, aplicando porcentajes de ganancia y descuentos de forma precisa. En nuestra plataforma, encontrarás cuatro calculadoras especializadas: una para productos individuales, otra para aplicar aumentos y descuentos, y dos más para gestionar precios de productos por kilo o volumen. Todo diseñado para adaptarse a tus necesidades y facilitar la gestión de tu negocio."
+					"Mantén un registro organizado de tus productos y precios, y accede a ellos de manera rápida y precisa. Con Pricify, puedes almacenar productos con precios por volumen o individuales y gestionarlos en una lista accesible desde cualquier dispositivo. Solo necesitas iniciar sesión en tu cuenta para administrar tus precios de manera eficiente, sin importar dónde te encuentres."
 				}
 				banner={productBanner}
 			/>
