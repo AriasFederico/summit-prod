@@ -13,7 +13,9 @@
   }
 
   @include respond-to('large') {
-    max-width: 70%;
+    max-width: 100%;
+    flex-direction: row;
+    justify-content: center;
   }
 
 }
