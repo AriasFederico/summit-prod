@@ -1,7 +1,6 @@
 import { Tools } from "..";
 import { CardTool } from "..";
 import "./ToolsHeader.scss";
-import { Outlet } from "react-router-dom";
 import { Calculator, Lists } from "../../../../../components/svg/index";
 import { useGetList } from "../../../products/hooks/useGetList";
 

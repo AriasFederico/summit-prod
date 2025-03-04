@@ -25,7 +25,7 @@ export const Table = () => {
 	return (
 		<>
 			<Search
-				placeholder={"Buscar producto"}
+				placeholder={"BUSCAR PRODUCTO"}
 				value={search}
 				change={(e) => setSearch(e.target.value)}
 			/>
