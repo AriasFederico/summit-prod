@@ -1,21 +1,18 @@
+import { motion } from 'framer-motion'
 import { useEffect, useState } from "react";
+import { iconMap } from "../../../../../components/iconMap";
+import { SectionLayout } from '../../../../../components/layout'
 import { getDolarData } from "../../services/getDolar";
-import { Dolar } from "./dolarCard/Dolar";
-import "./DolarHeader.scss";
-
+import styles from './DolarHeader.module.scss'
 export const DolarHeader = () => {
-	const [dolarValue, setDolarValue] = useState(null);
-	const [dolarBlueValue, setDolarBlueValue] = useState(null);
-	const [mayoristeValue, setMayoristeValue] = useState(null);
+	const IconStat = iconMap.stats;
+	const [data, setData] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const { dolarData, dolarBlueData, dolarMay } = await getDolarData();
-
-				setDolarBlueValue(dolarBlueData);
-				setDolarValue(dolarData);
-				setMayoristeValue(dolarMay);
+				const getData = await getDolarData();
+				setData(getData)
 			} catch (error) {
 				console.log(error);
 			}
@@ -23,19 +20,44 @@ export const DolarHeader = () => {
 		fetchData();
 	}, []);
 
-	const arrayDolarData = [
-		{ id: "dolarDataOficial", data: dolarValue },
-		{ id: "dolarBlue", data: dolarBlueValue },
-	];
+	const [selectedDolar, setSelectedDolar] = useState('oficial');
+	const dolarActive = data?.find((e) => e.casa === selectedDolar)
+	const dolarType = ['oficial', 'blue', 'bolsa', 'mayorista', 'tarjeta']
 
 	return (
-		<div className="DolarHeader" data-aos={"zoom-in"}>
-			{/* <Tools nameTool={'Valor del dolar hoy'} /> */}
-			<div className="DolarHeader-fx">
-				{arrayDolarData.map(({ id, data }) => (
-					<Dolar key={id} data={data} />
-				))}
+		<details className={styles.dolarSummary}>
+			<summary className={styles.header}>
+				<div className={styles.iconContainer}>
+					{IconStat && <IconStat className={styles.iconStat} />}
+				</div>
+				<p>Cotización del dolar</p>
+			</summary>
+			<div className={styles.summaryContent}>
+				<div className={styles.dolarTabs}>
+					{dolarType?.map((type) => (
+						<button key={type} className={`${styles.buttonHouse} ${selectedDolar === type ? styles.houseActive : styles.house}`} onClick={() => setSelectedDolar(type)}>{type.toUpperCase()}</button>
+					))}
+				</div>
+
+				<div className={styles.tabsContent}>
+					{
+						dolarActive ? (
+							<div className={styles.cardValues}>
+								<div className={`${styles.value} ${styles.buys}`} initial={{ opacity: 0, y: 50 }}
+								>
+									<span>COMPRA</span>
+									<p>${dolarActive.compra}</p>
+								</div>
+								<div className={`${styles.value} ${styles.sale}`}>
+									<span>VENTA</span>
+									<p>${dolarActive.venta}</p>
+								</div>
+							</div>) : (
+							<p>Cargando cotización..</p>
+						)
+					}
+				</div>
 			</div>
-		</div>
+		</details>
 	);
 };

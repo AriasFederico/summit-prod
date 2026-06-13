@@ -1,0 +1,10 @@
+.content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .ctas {
+        align-self: center;
+        margin-top: $space-3;
+    }
+}

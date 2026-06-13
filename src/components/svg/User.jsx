@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import "./styles/User.scss";
 import { GlobalContext } from "../../context/GlobalContext";
-import { ArrowDown } from "./ArrowDown";
 
 export const User = ({ className, click, event }) => {
 	const { user } = useContext(GlobalContext);
@@ -12,7 +11,6 @@ export const User = ({ className, click, event }) => {
 				<p className="User-admin">Administrador</p>
 				<p className="User-username">{user}</p>
 			</div>
-			<ArrowDown className={"User-arrow"} event={event} />
 		</div>
 	);
 };

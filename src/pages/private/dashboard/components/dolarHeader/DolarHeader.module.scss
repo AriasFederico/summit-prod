@@ -1,0 +1,120 @@
+.dolarSummary {
+    cursor: pointer;
+    border: 1px solid $color-border;
+    width: 100%;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    margin-bottom: $space-2;
+    user-select: none;
+    
+    .summaryContent {
+        padding: 0 $space-2 $space-2 ;
+    }
+
+    .header {
+        padding: $space-2;
+        display: flex;
+        align-items: center;
+        gap: $space-1;
+        font-weight: bold;
+        // background-color: red;
+    }
+
+
+    .dolarTabs {
+        margin-top: $space-1;
+        display: flex;
+        align-items: center;
+        gap: $space-1;
+        flex-wrap: wrap;
+    }
+
+    .buttonHouse {
+        padding: $space-1 $space-2;
+        background-color: $bg-soft;
+        border-radius: $radius-lg;
+        font-size: 12px;
+        color: $foreground-muted;
+        &:hover {
+            color: $foreground;
+        }
+    }
+    
+    .houseActive {
+        background-color: $color-primary;
+        color: white;
+        &:hover {
+            color: white;
+        }
+    }
+
+    .tabsContent {}
+
+    .iconContainer {
+        width: 2rem;
+        height: 2rem;
+        background-color: $color-primary-muted;
+        color: $color-primary;
+        border-radius: $radius-md;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .iconStat {}
+
+    .cardValues {
+        display: flex;
+        align-items: center;
+        gap: $space-1;
+        margin-top: $space-2;
+        flex-direction: column;
+
+        @include for-tablet(){
+            flex-direction: row;
+        }
+    }
+    
+    .buys {
+        background-color: $bg-soft;
+        p {
+            color: $foreground;
+            font-weight: bold;
+        }
+        span {
+            font-size: 10px;
+            color: $color-primary;
+        }
+    }
+
+    .sale {
+        // background-color: $color-primary-muted;
+        border: 1px solid $color-border;
+        
+        p {
+            color: $color-primary;
+            font-weight: bold;
+        }
+        span {
+            font-size: 10px;
+            color: $color-primary;
+        }
+    }
+    
+    .value {
+        width: 100%;
+        border-radius: $radius-lg;
+        font-size: $font-sm;
+        color: $foreground-muted;
+        padding: $space-2;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-1;
+        
+        p {
+            font-size: $font-xl;
+        }
+    }
+}

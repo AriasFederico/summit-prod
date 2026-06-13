@@ -1,0 +1,20 @@
+.buttonGoogle {
+    box-shadow: $shadow-soft;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    gap: $space-2;
+    color: $foreground;
+    padding: $space-1;
+
+    &:hover {
+        background-color: $bg-main;
+    }
+
+    .icon {
+        width: 1.5rem;
+    }
+}

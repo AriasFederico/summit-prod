@@ -1,0 +1,15 @@
+.content {
+    max-width: 590px;
+}
+
+.text {
+    color: $foreground-muted;
+}
+
+.img {
+    margin-top: $space-4;
+
+    @include for-tablet(){
+        margin: 0;
+    }
+}

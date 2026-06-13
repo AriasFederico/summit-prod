@@ -1,0 +1,21 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: $space-2;
+}
+
+.input {
+  color: $foreground;
+  padding: $space-2 $space-2 $space-2 $space-6;
+  border: none;
+  border: 1px solid $color-border;
+  outline: none;
+  border-radius: $radius-md;
+  width: 100%;
+}

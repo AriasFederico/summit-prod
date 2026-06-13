@@ -1,17 +1,17 @@
 import './Home.scss';
 import { Navigate } from 'react-router-dom';
-import { Hero } from './components/hero/Hero';
-import { LastSection } from './components/last/LastSection';
-import { ComponentBanner } from './components/section/BannerTemplate';
+import { Cta, Description, Features, Footer, Hero } from '../../components/layout';
 
 export const Home = ({ logged }) => {
 	if (logged) return <Navigate to={'/control/calculators'} />;
 
 	return (
-		<div className='Home'>
+		<div className='home'>
 			<Hero />
-			<ComponentBanner />
-			<LastSection />
+			<Features />
+			<Description />
+			<Cta />
+			<Footer name={'Pricify'} />
 		</div>
 	);
 };

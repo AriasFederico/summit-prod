@@ -1,0 +1,51 @@
+.cardTool {
+  padding: $space-2;
+  border-radius:$radius-md;
+  background-color: $color-primary-muted;
+  color: $foreground-muted;
+  flex: 1;
+  display: flex;
+  align-items: start;
+  gap: $space-1;
+  border: 1px solid $color-border;
+}
+
+.active {
+  background-color: $color-primary-dark;
+  color: white;
+
+  .title, .subtitle,.icon {
+    color: white;
+  }
+
+  .iconContainer {
+    border: 1px solid white;
+  }
+}
+
+.group {
+}
+
+.title {
+  color: $foreground;
+}
+
+.subtitle {
+  font-size: $font-sm;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+.iconContainer {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  border: 1px solid $color-border;
+  align-items: center;
+  border-radius: $radius-md;
+}
+
+.icon {
+  color: $foreground;
+}

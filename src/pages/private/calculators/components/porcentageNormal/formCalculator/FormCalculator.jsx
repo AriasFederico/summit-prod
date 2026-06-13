@@ -1,9 +1,11 @@
-import { Button } from "../../components.js";
+import { iconMap } from "../../../../../../components/iconMap.js";
+import { ButtonCta } from "../../../../../../components/ui/index.js";
 import { ButtonReset } from "../../buttons/reset/ButtonReset.jsx";
+import { Button } from "../../components.js";
 import { Input } from "../../input/Input";
-import { ResCalculator } from "./resCalculator/ResCalculator.jsx";
 import { useFormCalculator } from "../hooks/useFormCalculator.js";
-import "./FormCalculator.scss";
+import styles from './FormCalculator.module.scss'
+import { ResCalculator } from "./resCalculator/ResCalculator.jsx";
 
 export const FormCalculator = () => {
 	const {
@@ -21,66 +23,45 @@ export const FormCalculator = () => {
 	} = useFormCalculator();
 
 	const { valueCant, valueName, valueUnity } = finalValues;
+	const IconComponent = iconMap.calculator;
 
 	return (
-		<form className="FormCalculator" onSubmit={handleSubmit}>
-			<div className="FormCalculator-marked">
-				<div className="FormCalculator-marked-total">
-					<p>Marcado por cantidad total</p>
-					<Input
-						type={"number"}
-						placeholder={"Marcado ( % )"}
-						className={"FormCalculator-marked-input"}
-						name={"markedCant"}
-						valueInput={markedCant}
-						change={handleChange}
-					/>
+		<details className={styles.formCalculator} open>
+			<summary className={styles.header}>
+				<div className={styles.iconContainer}>
+					<IconComponent className={styles.icon} />
 				</div>
-				<div className="FormCalculator-marked-unity">
-					<p>Marcado por unidad</p>
-					<Input
-						type={"number"}
-						placeholder={"Marcado ( % )"}
-						className={"FormCalculator-marked-input"}
-						name={"markedUnity"}
-						valueInput={markedUnity}
-						change={handleChange}
-					/>
+				Calculadora por volumen o cantidad
+			</summary>
+			<form onSubmit={handleSubmit} className={styles.calculatorForm}>
+				<div className={styles.markedContainer}>
+					<label className={styles.label}>
+						Marcado por unidad total
+						<input className={styles.input} type="number" name={"markedCant"} value={markedCant} onChange={handleChange} onWheel={(e) => e.target.blur()} placeholder="%" />
+					</label>
+					<label className={styles.label}>
+						Marcado por unidad
+						<input className={styles.input} type="number" name="markedUnity" onWheel={(e) => e.target.blur()} value={markedUnity} onChange={handleChange} placeholder="%" />
+					</label>
 				</div>
-			</div>
 
-			<Input
-				type={"text"}
-				placeholder={"Nombre del producto"}
-				change={handleChangeName}
-				name={"name"}
-				valueInput={inputName}
-			/>
-			<Input
-				type={"number"}
-				placeholder={"Costo del producto ( $ )"}
-				name={"price"}
-				valueInput={price}
-				change={handleChange}
-			/>
+				<input className={styles.input} type="text" name="name" value={inputName} onChange={handleChangeName} placeholder="Nombre del producto" />
 
-			<Input
-				type={"number"}
-				placeholder={"Cantidad/Volumen total (ej: Kg)"}
-				name={"quantity"}
-				valueInput={quantity}
-				change={handleChange}
-			/>
+				<input className={styles.input} type="number" name="price" value={price} onChange={handleChange} placeholder="$ Costo del producto" onWheel={(e) => e.target.blur()} />
 
-			<Button value={"CALCULAR"} type={"submit"} />
-			<ButtonReset value={"Resetear"} onClick={clearForm} />
-			<ResCalculator
-				cant={valueCant}
-				name={valueName}
-				unity={valueUnity}
-				event={addData}
-			/>
-		</form>
+				<input className={styles.input} type="number" name="quantity" value={quantity} onChange={handleChange} placeholder="Cantidad/Volumen total (ej: Kg)" onWheel={(e) => e.target.blur()} />
+
+				<ButtonCta type="submit" text={'Calcular'} />
+				<ButtonCta onClick={clearForm} text={'Resetear'} icon={'reset'} variant="secondary" />
+
+				<ResCalculator
+					cant={valueCant}
+					name={valueName}
+					unity={valueUnity}
+					event={addData}
+				/>
+			</form>
+		</details >
 	);
 };
 

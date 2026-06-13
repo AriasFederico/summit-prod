@@ -1,0 +1,9 @@
+.toolsHeader {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    @include for-tablet(){
+        flex-direction: row;
+    }
+}

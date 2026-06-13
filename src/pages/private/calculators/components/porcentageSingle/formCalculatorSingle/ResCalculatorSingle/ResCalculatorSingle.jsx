@@ -1,15 +1,16 @@
-import { Button } from "../../../components";
-export const ResCalculatorSingle = ({ cant, event, name, price }) => {
+import { ButtonCta } from "../../../../../../../components/ui";
+import styles from './ResCalculatorSingle.module.scss'
+export const ResCalculatorSingle = ({ price, event, name }) => {
 	return (
-		<div className="ResCalculator">
-			<div className="ResCalculator-cont-product">
-				<h4>TU PRECIO POR CANTIDAD TOTAL</h4>
-				<p className="ResCalculator-res">{cant ? `$ ${cant}` : "-"}</p>{" "}
+		<div className={styles.resCalculatorSingle}>
+			<div className={styles.content}>
+				<p className={styles.priceType}>Precio del producto</p>
+				<span className={styles.res}>{price ? `$ ${price}` : "-"}</span>
 			</div>
-			<Button
-				value={"AGREGAR A MIS PRODUCTOS"}
-				click={() => event({ name, price })}
-			/>
+			<ButtonCta
+				text={"Agregar a mis productos"}
+				onClick={() => event({ name, price })}
+				variant="secondary" icon={'add'} />
 		</div>
 	);
 };

@@ -1,0 +1,13 @@
+.tools {
+    border-left: 5px solid $color-primary;
+    padding-left: $space-1;
+    border-radius: 4px;
+    margin-bottom: $space-2;
+
+    .name {
+        color: $color-primary;
+        letter-spacing: 2px;
+        font-size: $font-sm;
+        font-weight: 500;
+    }
+}

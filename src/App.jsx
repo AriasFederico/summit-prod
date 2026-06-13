@@ -1,17 +1,12 @@
 import Aos from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-import { useEffect } from 'react';
-import { useContext } from 'react';
+// ELIMINAR AOS ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Header } from './components/layout';
 import { GlobalContext } from './context/GlobalContext';
-import { Header } from './header/Header';
-import { Home } from './pages/home/Home';
-import { Login } from './pages/login/Login';
-import { PrivateRoute } from './pages/private/PrivateRoute';
-import { Calculators } from './pages/private/calculators/Calculators';
-import { Dashboard } from './pages/private/dashboard/Dashboard';
-import { Products } from './pages/private/products/Products';
-import { Register } from './pages/register/Register';
+import { Calculators, Dashboard, Home, Login, PrivateRoute, Products, Register, Reset_Password } from './pages';
+
 
 function App() {
 	const { logged } = useContext(GlobalContext);
@@ -32,6 +27,7 @@ function App() {
 					path='/registrarse'
 					element={<Register verifyLogged={logged} />}
 				/>
+				<Route path='/recuperar' element={<Reset_Password />} />
 				<Route
 					path='/control'
 					element={

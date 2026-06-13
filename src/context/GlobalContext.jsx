@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
-import { appFirebase } from "../services/firebase/credentials";
+// import { appFirebase } from "../services/firebase/credentials";
 import { getFirestore } from "firebase/firestore";
+import { createContext, useEffect, useState } from "react";
 
 export const GlobalContext = createContext();
 
@@ -9,27 +9,7 @@ export const GlobalProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState(null);
 	const [logged, setLogged] = useState(false);
-	const [exit, setExit] = useState(false); // Variable exit
 
-	const bbddCalculators = [
-		{
-			calculatorNormal: [
-				{
-					title: "Calculadora para productos con volúmen o cantidad",
-					description:
-						"Obtené el precio total y por unidad de peso o cantidad fácilmente.",
-				},
-			],
-		},
-		{
-			calculatorSingle: [
-				{
-					title: "Calculadora para productos individuales",
-					description: "Obtené el precio por producto rápidamente",
-				},
-			],
-		},
-	];
 
 	useEffect(() => {
 		const auth = getAuth();
@@ -65,12 +45,9 @@ export const GlobalProvider = ({ children }) => {
 				setUser,
 				logged,
 				setLogged,
-				exit,
-				setExit,
 				signOut: handleSignOut,
 				loading,
 				setLoading,
-				bbddCalculators,
 			}}
 		>
 			{children}

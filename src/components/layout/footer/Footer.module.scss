@@ -1,0 +1,16 @@
+.footer {
+    // background-color: ;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-around;
+    border-top: 1px solid $color-border;
+
+    @include for-tablet(){
+        flex-direction: row;
+    }
+}
+
+.copyright {font-size: 12px; }

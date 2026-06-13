@@ -1,11 +1,8 @@
-import "./Tools.scss";
-import { ArrowRight } from "../../../../../components/svg/ArrowRight";
-
+import styles from './Tools.module.scss'
 export const Tools = ({ nameTool }) => {
 	return (
-		<div className="Tools">
-			<ArrowRight classname={"Tools-arrow"} />
-			<p className="Tools-p">{nameTool}</p>
+		<div className={styles.tools}>
+			<p className={styles.name}>{nameTool}</p>
 		</div>
 	);
 };

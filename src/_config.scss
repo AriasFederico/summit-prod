@@ -1,0 +1,80 @@
+// CODEFEX VARIABLES
+
+// ==========================================
+// PALETA DE COLORES (Semántica y Funcional)
+// ==========================================
+
+// Tonos Principales (Marca)
+$color-primary:        #59816f;
+$color-primary-muted:  #f8f8f6; // El "alpha" para fondos suaves
+$color-primary-dark:   #658b7a;                // Para estados :hover
+
+// Superficies y Fondos (Backgrounds)
+$bg-main:              #ffffff; // El "papel" de la web
+$bg-soft:              #f6f6f6; // Secciones con ligero contraste
+$white:                #ffffff;
+
+// Contenidos y Textos (Foregrounds)
+$foreground:           #333333; // Títulos y textos fuertes (la "tinta")
+$foreground-muted:     #737373; // Párrafos y textos secundarios
+$color-border:         #e6e6e6;
+
+// ==========================================
+// SISTEMA DE ESPACIOS (Regla de los 8px)
+// ==========================================
+$space-1: 0.5rem;   // 8px
+$space-2: 1rem;     // 16px
+$space-3: 1.5rem;   // 24px
+$space-4: 2rem;     // 32px
+$space-6: 3rem;     // 48px
+$space-8: 4rem;     // 64px 
+$space-9: 6rem;     // (Ideal para paddings de sección)
+
+// ==========================================
+// TIPOGRAFÍA (Escala de legibilidad)
+// ==========================================
+$font-sm:   0.875rem; // 14px
+$font-base: 1rem;     // 16px
+$font-lg:   1.125rem; // 18px
+$font-xl:   1.5rem;   // 24px
+$font-2xl:  2rem;     // 32px
+$font-3xl:  2.5rem;   // 40px
+$font-4xl:  3.5rem;   // 56px (Títulos Hero impactantes)
+
+// Definimos los nombres de las familias
+$font-accent: 'Poppins', sans-serif; // Para títulos y botones impactantes
+$font-main: 'Inter', sans-serif;      // Para párrafos y textos base
+
+// También es buena práctica definir los pesos (weights)
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-bold: 700;
+
+// ==========================================
+// MISCELÁNEA (Estética de Salud)
+// ==========================================
+$radius-md: 8px;
+$radius-lg: 16px;
+$shadow-soft: 1px 1px 10px rgba(50, 50, 50, 0.1);
+$transition: all 0.3s ease;
+
+// ==========================================
+// MIXINS (Atajos de productividad)
+// ==========================================
+
+@mixin for-tablet {
+    @media screen and (min-width: 900px) { @content; }
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Contenedor estándar para que no se "desparrame" la web
+@mixin container {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 0 $space-2;
+}

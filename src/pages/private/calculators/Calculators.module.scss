@@ -1,0 +1,12 @@
+.calculators {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: $space-2;
+    margin-top: $space-4;
+    max-width: 1152px;
+
+    @include for-tablet(){
+        flex-direction: row;
+    }
+}

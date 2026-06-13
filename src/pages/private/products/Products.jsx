@@ -1,22 +1,13 @@
 import "./Products.scss";
 import { Table } from "../products/components/table/Table.jsx";
-import { TableSingle } from "./components/tableSingle/TableSingle.jsx";
 export const Products = () => {
+
+	// useEffect escuchando el tamaño del viewport
+
 	return (
 		<div className="Products">
-			<div className="Products-list">
-				<HeaderProducts title={"Lista de productos (cantidad / volumen)"} />
-				<Table />
-			</div>
-
-			<div className="Products-list">
-				<HeaderProducts title={"Lista de productos individuales"} />
-				<TableSingle />
-			</div>
+			<Table />
+			{/* <TableMobile/> renderizado condicional */}
 		</div>
 	);
-};
-
-export const HeaderProducts = ({ title }) => {
-	return <h1 className="Products-title">{title}</h1>;
 };

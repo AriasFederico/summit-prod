@@ -1,12 +1,12 @@
-import { PorcentageNormal } from "./components/porcentageNormal/PorcentageNormal";
-import { PorcentageSingle } from "./components/porcentageSingle/PorcentageSingle";
-import "./Calculators.scss";
+import styles from './Calculators.module.scss'
+import { FormCalculator } from "./components/porcentageNormal/formCalculator/FormCalculator";
+import { FormCalculatorSingle } from "./components/porcentageSingle/formCalculatorSingle/FormCalculatorSingle";
+
 export const Calculators = () => {
 	return (
-		<div className="Calculators">
-			<PorcentageNormal />
-			<PorcentageSingle />
-			{/* footer */}
+		<div className={styles.calculators}>
+			<FormCalculator />
+			<FormCalculatorSingle />
 		</div>
 	);
 };

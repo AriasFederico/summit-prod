@@ -1,32 +1,31 @@
-import { useState, useEffect, useContext } from "react";
-import { appFirebase } from "../../../../../../services/firebase/credentials";
-import { getAuth } from "firebase/auth";
-import { GlobalContext } from "../../../../../../context/GlobalContext";
+import { getAuth } from 'firebase/auth';
 import {
-	getFirestore,
-	collection,
 	addDoc,
-	getDoc,
+	collection,
 	doc,
-} from "firebase/firestore";
-import { useGetList } from "../../../../products/hooks/useGetList";
-import { useNavigate } from "react-router-dom";
+	getDoc,
+	getFirestore,
+} from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../../../../../../context/GlobalContext';
+import { appFirebase } from '../../../../../../services/firebase/credentials';
+import { useGetList } from '../../../../products/hooks/useGetList';
 
 const db = getFirestore(appFirebase);
 
 export const useFormCalculator = () => {
 	const redirect = useNavigate();
 	const { handleDeleteItem } = useGetList();
-	const [subId, setSubId] = useState("");
-	const { setExit } = useContext(GlobalContext);
+	const [subId, setSubId] = useState('');
 	const auth = getAuth();
 
 	// Estados para los valores de porcentaje y precio
 	const [inputsValues, setInputsValues] = useState({
-		markedCant: localStorage.getItem("markedCant") || "",
-		markedUnity: localStorage.getItem("markedUnity") || "",
-		price: "",
-		quantity: "",
+		markedCant: localStorage.getItem('markedCant') || '',
+		markedUnity: localStorage.getItem('markedUnity') || '',
+		price: '',
+		quantity: '',
 	});
 
 	const { markedCant, markedUnity, price, quantity } = inputsValues;
@@ -35,31 +34,31 @@ export const useFormCalculator = () => {
 		const { name, value } = e.target;
 		setInputsValues({
 			...inputsValues,
-			[name]: value ? Number(value) : "",
+			[name]: value ? Number(value) : '',
 		});
 	};
 
 	// Guardar cambios de porcentaje en `localStorage`
 	useEffect(() => {
-		localStorage.setItem("markedCant", markedCant);
-		localStorage.setItem("markedUnity", markedUnity);
+		localStorage.setItem('markedCant', markedCant);
+		localStorage.setItem('markedUnity', markedUnity);
 	}, [markedCant, markedUnity]);
 
 	// Estado para el nombre del producto
 	const [inputName, setInputName] = useState(
-		localStorage.getItem("inputName") || "",
+		localStorage.getItem('inputName') || '',
 	);
 
 	const handleChangeName = (e) => {
 		const valueName = e.target.value;
 		setInputName(valueName);
-		localStorage.setItem("inputName", valueName); // Guardar el nombre en `localStorage`
+		localStorage.setItem('inputName', valueName); // Guardar el nombre en `localStorage`
 	};
 
 	// Función para calcular porcentaje
 	const calculatePorcentage = (markedCant, markedUnity, price, cant) => {
-		const toPercentage = (value) => parseFloat(value / 100);
-		const toNumber = (value) => parseFloat(value);
+		const toPercentage = (value) => Number.parseFloat(value / 100);
+		const toNumber = (value) => Number.parseFloat(value);
 		const cantPercentage = toPercentage(markedCant);
 		const unityPercentage = toPercentage(markedUnity);
 		const priceNumber = toNumber(price);
@@ -72,22 +71,22 @@ export const useFormCalculator = () => {
 		const priceWithUnityPercentage = priceNumber * (1 + unityPercentage);
 		const pricePerUnit = priceWithUnityPercentage / quantity;
 		return {
-			priceCant: priceWithCantPercentage.toLocaleString("de-DE"),
+			priceCant: priceWithCantPercentage.toLocaleString('de-DE'),
 			priceUnity: Math.ceil(pricePerUnit),
 		};
 	};
 
 	// Estado para valores finales
 	const [finalValues, setFinalValues] = useState({
-		valueName: "",
-		valueCant: "",
-		valueUnity: "",
+		valueName: '',
+		valueCant: '',
+		valueUnity: '',
 	});
 
 	// Manejador de envío de formulario
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (price === "") return;
+		if (price === '') return;
 		const { priceCant, priceUnity } = calculatePorcentage(
 			markedCant,
 			markedUnity,
@@ -108,28 +107,24 @@ export const useFormCalculator = () => {
 			const user = auth.currentUser;
 
 			if (!user) {
-				console.error("Usuario no autenticado");
+				console.error('Usuario no autenticado');
 				return;
 			}
 			const dataToAdd = {
 				name: finalValues.valueName,
-				volume: inputsValues.quantity,
-				priceCant: finalValues.valueCant,
+				volume: inputsValues.quantity || '-',
+				priceCant: finalValues.valueCant || '-',
 				unity: finalValues.valueUnity,
 				userId: user.uid,
+				// ACA AGEGAR LO QUE TIENE LA CALCULADORA SINGLE
 			};
 
-			await addDoc(collection(db, "products"), dataToAdd);
-
-			setExit(true);
-			setTimeout(() => {
-				setExit(false);
-			}, 3000);
+			await addDoc(collection(db, 'products'), dataToAdd);
 
 			clearForm();
 		} catch (error) {
 			console.error(
-				"Error al agregar el documento:",
+				'Error al agregar el documento:',
 				error.code,
 				error.message,
 			);
@@ -139,16 +134,16 @@ export const useFormCalculator = () => {
 	// Obtener un documento de Firestore
 	const getOne = async (id) => {
 		try {
-			const docRef = doc(db, "products", id);
+			const docRef = doc(db, 'products', id);
 			const docSnap = await getDoc(docRef);
 			const data = docSnap.data();
 
 			if (data) {
 				console.log(data.name);
 				setInputName(data.name);
-				localStorage.setItem("inputName", data.name); // Guardar en `localStorage`
+				localStorage.setItem('inputName', data.name); // Guardar en `localStorage`
 				handleDeleteItem(id);
-				redirect("../calculators");
+				redirect('../calculators');
 			}
 		} catch (error) {
 			console.log(error);
@@ -157,7 +152,7 @@ export const useFormCalculator = () => {
 
 	// Cargar el nombre del producto si `subId` cambia
 	useEffect(() => {
-		if (subId !== "") {
+		if (subId !== '') {
 			getOne(subId);
 		}
 	}, [subId]);
@@ -166,11 +161,11 @@ export const useFormCalculator = () => {
 	const clearForm = () => {
 		setInputsValues({
 			...inputsValues,
-			price: "",
-			quantity: "",
+			price: '',
+			quantity: '',
 		});
-		setInputName("");
-		localStorage.removeItem("inputName"); // Limpiar `localStorage`
+		setInputName('');
+		localStorage.removeItem('inputName'); // Limpiar `localStorage`
 	};
 
 	return {

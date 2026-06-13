@@ -1,62 +1,59 @@
-import './Register.scss';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Logo } from '../../components/svg/Logo';
+import { iconMap } from '../../components/iconMap';
+import { SectionLayout } from '../../components/layout';
+import { ButtonCta, ButtonGoogle } from '../../components/ui';
+import { signInWithGoogle } from '../../services/firebase/credentials';
 import { useForm } from '../../utils/useForm';
-import { InputRegister } from './components/input/InputRegister';
-import { MessageError } from './components/messageError/MessageError';
-import { RegisterHeader } from './components/registerHeader/RegisterHeader';
-import { BtnRegister } from './components/submit/BtnRegister';
+import styles from './Register.module.scss'
 import { useRegister } from './hooks/useRegister';
 import { useRegisterSubmit } from './hooks/useRegisterSubmit';
 
 export const Register = () => {
 	const { initialRegister } = useRegister();
 	const { values, handleChange, resetForm } = useForm(initialRegister);
+	const EyeIcon = iconMap.eye;
+
 	const { handleSubmit, error, successful } = useRegisterSubmit(
 		values,
 		resetForm,
 	);
-	// const {}
+
+	const [changeInputType, setChangeInputType] = useState(false);
 
 	return (
-		<div className='Register'>
-			<div className='Register-form-div'>
-				<div className='Register-logo-cont'>
-					<Logo className={'Register-logo'} svg={'Register-svg'} />
-				</div>
-				<form className='Register-form' onSubmit={handleSubmit}>
-					<RegisterHeader
-						title={'Registra tu negocio'}
-						subtitle={'Ingresa tus datos para el registro'}
-					/>
-					<div className='Register-personal'>
-						<InputRegister
-							className={'Register-input'}
-							type={'email'}
-							placeholder={'Email'}
-							value={values.email}
-							change={handleChange}
-							name={'email'}
-						/>
-						<InputRegister
-							className={'Register-input'}
-							type={'password'}
-							placeholder={'Contraseña'}
-							value={values.password}
-							change={handleChange}
-							name={'password'}
-						/>
-						{error ? <MessageError active /> : <MessageError />}
-					</div>
-
-					<div className='Register-btns'>
-						<BtnRegister type='submit' successful={successful} />
-						<Link className='Register-register' to={'/ingresar'}>
-							Ya tengo una cuenta
-						</Link>
-					</div>
-				</form>
+		<SectionLayout direction={'column'} bgVariant={'main'}>
+			<div className={styles.header}>
+				<h2>Crea tu cuenta</h2>
+				<p>Registrate para comenzar.</p>
 			</div>
-		</div>
+			<form onSubmit={handleSubmit} className={styles.form}>
+				<ButtonGoogle event={signInWithGoogle} />
+				<div className={styles.separator}>
+					<div />
+					<p>o</p>
+					<div />
+				</div>
+				<label className={styles.label}>
+					Correo electrónico
+					<input className={styles.input} type="email" onChange={handleChange} name='email' placeholder='tu@ejemplo.com' required />
+				</label>
+
+				<label className={styles.label}>
+					Contraseña
+					<div className={styles.inputGroup}>
+						<input className={styles.input} type={changeInputType ? 'text' : 'password'} value={values.password} onChange={handleChange} name='password' placeholder='********' required />
+						<button type='button' className={styles.eyeContainer} onClick={() => setChangeInputType(!changeInputType)}><EyeIcon /></button>
+					</div>
+				</label>
+				<div className={styles.ctas}>
+					<ButtonCta type='submit' text={'Crear cuenta'} />
+				</div>
+				{
+					error && <p className={styles.error}>Minimo 8 carácteres</p>
+				}
+			</form>
+		</SectionLayout >
 	);
 };
+

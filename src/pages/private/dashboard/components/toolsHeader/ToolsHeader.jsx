@@ -1,34 +1,29 @@
-import { Tools } from "..";
 import { CardTool } from "..";
-import "./ToolsHeader.scss";
-import { Calculator, Lists } from "../../../../../components/svg/index";
 import { useGetList } from "../../../products/hooks/useGetList";
+import styles from './ToolsHeader.module.scss'
 
 export const ToolsHeader = () => {
 	const { getList } = useGetList();
 	return (
-		<div className="ToolsHeader">
-			<div className="ToolsHeader-calculator">
-				<Tools nameTool={"HERRAMIENTAS"} />
-				<div className="ToolsHeader-cards">
-					<CardTool
-						name={"CALCULADORAS SUMMIT"}
-						svg={<Calculator className={"ToolsHeader-svg"} />}
-						redirect={"calculators"}
-					/>
-					<CardTool
-						name={"PRODUCTOS"}
-						redirect={"products"}
-						svg={<Lists className={"ToolsHeader-svg"} />}
-						event={() => getList()}
-					/>
-					{/* <CardTool
+		<div className={styles.toolsHeader}>
+			<CardTool
+				title={"Calculadoras de Margen"}
+				subtitle={'Calculá costos y márgenes de ganancia por unidad o lote.'}
+				redirect={"calculators"}
+				icon={'percent'}
+			/>
+			<CardTool
+				title={"Mis Productos"}
+				subtitle={'Controlá el stock, precios y márgenes de toda tu mercadería'}
+				redirect={"products"}
+				icon={'box'}
+				event={() => getList()}
+			/>
+			{/* <CardTool
 						name={'NOVEDADES'}
 						redirect={'novedades'}
 						svg={<Lists className={'ToolsHeader-svg'} />}
 					/> */}
-				</div>
-			</div>
 		</div>
 	);
 };

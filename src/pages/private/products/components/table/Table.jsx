@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
-import { useGetList } from "../../hooks/useGetList";
 import { Delete } from "../../../../../components/svg/Delete.jsx";
 import { Edit } from "../../../../../components/svg/Edit.jsx";
-import "./Table.scss";
 import { useFormCalculator } from "../../../calculators/components/porcentageNormal/hooks/useFormCalculator.js";
+import { useGetList } from "../../hooks/useGetList";
 import { Search } from "../input/Search.jsx";
+import styles from './Table.module.scss'
+
+// MUDO EL USEGETLIST AL PADRE 'APP' PARA QUE HAGA EL LLAMADO UNA VEZ MONTADA LA APP, Y LUEGO PASO LOS DATOS COMO PROP A TABLE
 
 export const Table = () => {
+	const [search, setSearch] = useState("");
+
 	const { list, getList, handleDeleteItem } = useGetList();
 	const { setSubId } = useFormCalculator();
-
-	const [search, setSearch] = useState("");
 	// Llama a getList cuando el componente se monte
 	useEffect(() => {
 		getList();
@@ -22,54 +24,56 @@ export const Table = () => {
 
 	const displayList = filteredList ? filteredList : list;
 
+	const contentTable = {
+		th: ['Producto', 'Costo total', 'Costo unidad', 'Ganancia Neta', 'Marcado']
+	}
+	const { th } = contentTable;
+
 	return (
 		<>
 			<Search
-				placeholder={"BUSCAR PRODUCTO"}
+				placeholder={"Buscar producto"}
 				value={search}
 				change={(e) => setSearch(e.target.value)}
 			/>
-
-			{/* funcion que dependiendo de el valor de search haga el filtro a la lista */}
-
-			<table className="Table-table">
-				<thead className="Table-thead">
-					{/* en contexto agregar los titulos para hacer un mapeo */}
+			<p>{displayList.length}
+			</p>
+			<table className={styles.table}>
+				<thead className={styles.thead}>
 					<tr>
-						<th className="Table-th">Nombre del producto</th>
-						<th className="Table-th">Cantidad</th>
-						<th className="Table-th">($) Cantidad</th>
-						<th className="Table-th">($) Unidad</th>
-						<th className="Table-th">Acción</th>
+						{th?.map((e) => <th key={e} className={styles.th}>{e}</th>)}
 					</tr>
 				</thead>
-				<tbody className="Table-tdbody">
+				<tbody>
 					{displayList.length > 0 ? (
 						displayList.map((item) => (
-							<tr key={item.id} className="Table-tr">
-								<td>{item.name.toUpperCase()}</td>
-								<td>{item.volume}</td>
-								<td className="Table-td-price">$ {item.priceCant}</td>
+							<tr key={item.id} className={styles.tr}>
+								<td>{item.name}</td>
+								<td className="Table-td-price">$ {item.priceCant} -</td>
 								<td className="Table-td-price">$ {item.unity}</td>
-								<td className="Table-td-action">
-									<Delete
-										click={() => handleDeleteItem(item.id)}
-										className={"Table-delete"}
-									/>
-									<Edit
-										click={() => setSubId(item.id)}
-										className={"Table-edit"}
-									/>
-								</td>
+								{/* <td className="Table-td-action"></td> */}
+								<td className="Table-td-action">$</td>
+								<td className="Table-td-action">%</td>
 							</tr>
 						))
 					) : (
 						<tr>
 							<td colSpan="5">No hay productos disponibles</td>
 						</tr>
-					)}{" "}
+					)}
 				</tbody>
 			</table>
 		</>
 	);
 };
+
+
+// {/* <Delete
+// 	click={() => handleDeleteItem(item.id)}
+// 	className={"Table-delete"}
+// />
+// <Edit
+// 	click={() => setSubId(item.id)}
+// 	className={"Table-edit"}
+// /> */}
+// LEER: deberia hacer dos tablas, una que renderice mobile y otra pc

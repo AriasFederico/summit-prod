@@ -1,0 +1,16 @@
+.content {
+    text-align: center;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-2;
+    
+    @include for-tablet(){
+        max-width: 780px;
+        flex-direction: row;
+        align-items: center;
+    }
+}

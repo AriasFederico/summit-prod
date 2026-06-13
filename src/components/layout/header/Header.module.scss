@@ -1,0 +1,145 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 500;
+  padding: $space-2 $space-2;
+  // animation: shadow linear;
+  // animation-timeline: scroll();
+  // animation-range: 0 20rem;
+  // animation-fill-mode: both;
+  backdrop-filter: blur(10px);
+  // background-color: $bg-main;
+
+  .container {
+    max-width: 1152px;
+    // tamaño variable
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: $font-lg;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: $foreground;
+    gap: $space-1;
+
+    &::after {
+      // content: ' asd';
+    }
+
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: $space-1;
+      border-radius: $radius-md;
+      background-color: $color-primary;
+    }
+  }
+  
+  .nav {
+    max-height: 0;
+    overflow: hidden;
+    color: $foreground;
+    
+    @include for-tablet(){
+      max-height: auto;
+      overflow: visible;
+      display: flex;
+      align-items: center;
+      gap: $space-3;    
+    }
+  }    
+  
+  .navOpen {
+    background-color: $bg-main;
+    // background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-4;
+    max-height: 500px;
+    padding: 2rem 0;
+    border-bottom: 1px solid $color-border;
+    transition: $transition;
+    position: absolute;
+    top: 3.9rem;
+    left: 0;
+    width: 100%;
+  }
+
+
+  .cta {
+    display: none;
+
+    @include for-tablet(){
+      display: block;
+    }
+  }
+
+  .ctaMobile {
+    @include for-tablet(){
+      display: none;
+    }
+  }
+
+  .link {
+    border-bottom: 1px solid transparent;
+    &:hover {
+      color: $color-primary;
+      border-color: $color-primary;
+    }
+  }
+
+  .linkActive {
+    color: $color-primary;
+    border-bottom: 1px solid $color-primary;
+  }
+
+  .burger {    
+  
+    .icon {
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+
+    @include for-tablet(){
+      display: none;
+    }
+  }
+
+  .navUser {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: $space-2;
+
+    @include for-tablet(){
+      flex-direction: row;
+    }
+  }
+
+  .userName {
+    font-size: $font-sm;
+    color: $foreground-muted;
+  }
+
+}
+
+@keyframes shadow {
+  from {
+  }
+  to {
+    background-color: $bg-main;
+    box-shadow: $shadow-soft;
+    background-color: $bg-main;
+    // border-bottom: 1px solid $color-border;
+    // padding: 0 $space-2;
+  }
+}
