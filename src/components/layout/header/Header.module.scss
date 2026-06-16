@@ -5,10 +5,10 @@
   width: 100%;
   z-index: 500;
   padding: $space-2 $space-2;
-  // animation: shadow linear;
-  // animation-timeline: scroll();
-  // animation-range: 0 20rem;
-  // animation-fill-mode: both;
+  animation: shadow linear;
+  animation-timeline: scroll();
+  animation-range: 0 20rem;
+  animation-fill-mode: both;
   backdrop-filter: blur(10px);
   // background-color: $bg-main;
 
@@ -136,10 +136,9 @@
   from {
   }
   to {
-    background-color: $bg-main;
-    box-shadow: $shadow-soft;
-    background-color: $bg-main;
-    // border-bottom: 1px solid $color-border;
-    // padding: 0 $space-2;
+    // background-color: $bg-main;
+    // box-shadow: $shadow-soft;
+    // overflow: hidden;
+    top:-10rem;
   }
 }
