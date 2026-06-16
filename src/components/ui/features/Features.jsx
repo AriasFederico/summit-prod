@@ -5,13 +5,13 @@ import styles from './Features.module.scss'
 export const Features = () => {
   const items = [
     {
-      icon: 'stack', title: 'Registro al instante', text: 'Calcula márgenes de ganancia, descuentos y markups en segundos.'
+      icon: 'stack', title: 'Registro al instante', text: 'Creá la cuenta de tu negocio con tu email en dos segundos.'
     },
     {
-      icon: 'calculator', title: 'Calculadoras', text: 'Visualiza variaciones porcentuales entre periodos de tu negocio.'
+      icon: 'calculator', title: 'Calculadoras', text: 'Calculá márgenes de ganancia en segundos.'
     },
     {
-      icon: 'register', title: 'Rápido y fácil', text: 'Reparte costos, comisiones y ganancias con precisión total.'
+      icon: 'register', title: 'Rápido y fácil', text: 'Una interfaz intuitiva diseñada para agilizar el día a día de tu negocio'
     },
   ]
 
