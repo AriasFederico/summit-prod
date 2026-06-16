@@ -4,7 +4,20 @@
   padding: $space-2;
   border-radius: $radius-md;
   // height: fit-content;
-    background-color: $color-primary-muted;
+  width: 100%;
+  background-color: $color-primary-muted;
+}
+  
+.inputsGrid {
+  display: flex;
+  flex-direction: column;
+  gap:$space-1;
+
+  @include for-tablet(){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-1;
+  }
 }
 
 .header {
@@ -30,7 +43,7 @@
   flex-direction: column;
   gap: $space-2;
   margin-bottom: $space-2;
-
+  
   @include for-tablet(){
     flex-direction: row;
   }

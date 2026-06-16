@@ -24,7 +24,7 @@ export const FormCalculator = () => {
 	const IconComponent = iconMap.calculator;
 
 	return (
-		<details className={styles.formCalculator} open>
+		<details className={styles.formCalculator}>
 			<summary className={styles.header}>
 				<div className={styles.iconContainer}>
 					<IconComponent className={styles.icon} />
@@ -43,13 +43,14 @@ export const FormCalculator = () => {
 					</label>
 				</div>
 
-				<input className={styles.input} type="text" name="name" value={inputName} onChange={handleChangeName} placeholder="Nombre del producto" />
+				<div className={styles.inputsGrid}>
+					<input className={styles.input} type="text" name="name" value={inputName} onChange={handleChangeName} placeholder="Nombre del producto" />
 
-				<input className={styles.input} type="number" name="price" value={price} onChange={handleChange} placeholder="$ Costo del producto" onWheel={(e) => e.target.blur()} />
+					<input className={styles.input} type="number" name="price" value={price} onChange={handleChange} placeholder="$ Costo del producto" onWheel={(e) => e.target.blur()} />
 
-				<input className={styles.input} type="number" name="quantity" value={quantity} onChange={handleChange} placeholder="Cantidad/Volumen total (ej: Kg)" onWheel={(e) => e.target.blur()} step="any" />
-
+					<input className={styles.input} type="number" name="quantity" value={quantity} onChange={handleChange} placeholder="Cantidad/Volumen total (ej: Kg)" onWheel={(e) => e.target.blur()} step="any" />
 				<ButtonCta type="submit" text={'Calcular'} />
+				</div>
 				<ButtonCta onClick={clearForm} text={'Resetear'} icon={'reset'} variant="secondary" />
 
 				<ResCalculator

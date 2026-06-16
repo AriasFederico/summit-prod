@@ -9,7 +9,7 @@ export const PrivateRoute = ({ children }) => {
 	useEffect(() => {
 		setTimeout(() => {
 			setLoading(false);
-		}, 1000);
+		}, 1500);
 	}, []);
 
 	if (loading) {

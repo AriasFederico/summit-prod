@@ -23,7 +23,7 @@ export const FormCalculatorSingle = () => {
 
 
 	return (
-		<details className={styles.formCalculatorSingle} open>
+		<details className={styles.formCalculatorSingle}>
 			<summary className={styles.header}>
 				<div className={styles.iconContainer}>
 					<IconComponent className={styles.icon} />
@@ -38,15 +38,12 @@ export const FormCalculatorSingle = () => {
 						<input className={styles.input} type="number" name={"markedProduct"} value={markedProduct} onChange={handleChange} onWheel={(e) => e.target.blur()} placeholder="%" step={'any'} />
 					</label>
 				</div>
-
-				<input className={styles.input} type="text" name="name" value={inputNameSingle} onChange={handleChangeName} placeholder="Nombre del producto" />
-
-				<input className={styles.input} type="number" name="price" value={price} onChange={handleChange} placeholder="$ Costo del producto" onWheel={(e) => e.target.blur()} />
-				<ButtonCta type="submit" text={'Calcular'} />
-				<ButtonCta text={'Resetear'} icon={'reset'} variant="secondary" onClick={clearForm} />
-				{/* <Button value={"CALCULAR"} type={"submit"} />
-				<ButtonReset value={"Resetear"} onClick={clearForm} /> */}
-
+				<div className={styles.inputsGrid}>
+					<input className={styles.input} type="text" name="name" value={inputNameSingle} onChange={handleChangeName} placeholder="Nombre del producto" />
+					<input className={styles.input} type="number" name="price" value={price} onChange={handleChange} placeholder="$ Costo del producto" onWheel={(e) => e.target.blur()} />
+					<ButtonCta type="submit" text={'Calcular'} />
+					<ButtonCta text={'Resetear'} icon={'reset'} variant="secondary" onClick={clearForm} />
+				</div>
 				<ResCalculatorSingle
 					event={addData}
 					name={valueName}

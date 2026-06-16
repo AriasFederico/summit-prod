@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
 				setUser(null);
 				setLogged(false);
 			}
-			setLoading(false); // Detener el loading después de verificar el usuario
+			// setLoading(true); // Detener el loading después de verificar el usuario
 		});
 
 		return () => unsubscribe();

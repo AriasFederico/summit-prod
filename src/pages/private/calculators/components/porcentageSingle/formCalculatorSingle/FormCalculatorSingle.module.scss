@@ -1,9 +1,22 @@
 .formCalculatorSingle {
+  width: 100%;
   flex: 1;
   border: 1px solid $color-border;
   padding: $space-2;
   border-radius: $radius-md;
   background-color: $color-primary-muted;
+}
+
+.inputsGrid {
+  display: flex;
+  flex-direction: column;
+  gap:$space-1;
+
+  @include for-tablet(){
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-1;
+  }
 }
 
 .header {
@@ -25,9 +38,6 @@
 }
 
 .markedContainer {
-  display: flex;
-  flex-direction: column;
-  gap: $space-2;
   margin-bottom: $space-2;
 
   @include for-tablet(){
