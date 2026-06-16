@@ -35,11 +35,11 @@ export const FormCalculator = () => {
 				<div className={styles.markedContainer}>
 					<label className={styles.label}>
 						Marcado por cantidad total
-						<input className={styles.input} type="number" name={"markedCant"} value={markedCant} onChange={handleChange} onWheel={(e) => e.target.blur()} placeholder="%" />
+						<input className={styles.input} type="number" name={"markedCant"} value={markedCant} onChange={handleChange} onWheel={(e) => e.target.blur()} placeholder="%" step="any" />
 					</label>
 					<label className={styles.label}>
 						Marcado por unidad
-						<input className={styles.input} type="number" name="markedUnity" onWheel={(e) => e.target.blur()} value={markedUnity} onChange={handleChange} placeholder="%" />
+						<input className={styles.input} type="number" name="markedUnity" onWheel={(e) => e.target.blur()} value={markedUnity} onChange={handleChange} placeholder="%" step="any" />
 					</label>
 				</div>
 
@@ -47,7 +47,7 @@ export const FormCalculator = () => {
 
 				<input className={styles.input} type="number" name="price" value={price} onChange={handleChange} placeholder="$ Costo del producto" onWheel={(e) => e.target.blur()} />
 
-				<input className={styles.input} type="number" name="quantity" value={quantity} onChange={handleChange} placeholder="Cantidad/Volumen total (ej: Kg)" onWheel={(e) => e.target.blur()} />
+				<input className={styles.input} type="number" name="quantity" value={quantity} onChange={handleChange} placeholder="Cantidad/Volumen total (ej: Kg)" onWheel={(e) => e.target.blur()} step="any" />
 
 				<ButtonCta type="submit" text={'Calcular'} />
 				<ButtonCta onClick={clearForm} text={'Resetear'} icon={'reset'} variant="secondary" />

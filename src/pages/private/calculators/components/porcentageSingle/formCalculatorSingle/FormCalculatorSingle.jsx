@@ -35,7 +35,7 @@ export const FormCalculatorSingle = () => {
 				<div className={styles.markedContainer}>
 					<label className={styles.label}>
 						Marcado del producto
-						<input className={styles.input} type="number" name={"markedProduct"} value={markedProduct} onChange={handleChange} onWheel={(e) => e.target.blur()} placeholder="%" />
+						<input className={styles.input} type="number" name={"markedProduct"} value={markedProduct} onChange={handleChange} onWheel={(e) => e.target.blur()} placeholder="%" step={'any'} />
 					</label>
 				</div>
 
