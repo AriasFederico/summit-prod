@@ -16,6 +16,7 @@ import { appFirebase } from '../../../../../../services/firebase/credentials';
 const db = getFirestore(appFirebase);
 
 export const useFormCalculatorSingle = () => {
+	const { getList } = useContext(GlobalContext);
 	const redirect = useNavigate();
 	// const { handleDeleteItem } = useGetListSingle();
 	const [subId, setSubId] = useState('');
@@ -68,6 +69,7 @@ export const useFormCalculatorSingle = () => {
 	const [finalValues, setFinalValues] = useState({
 		valueName: '',
 		valueCant: '',
+		marked: '',
 	});
 
 	const handleSubmit = async (e) => {
@@ -82,6 +84,7 @@ export const useFormCalculatorSingle = () => {
 			...finalValues,
 			valueName: inputNameSingle,
 			valueCant: priceWithProductPercentage.toLocaleString('de-DE'),
+			marked: inputsValues.markedProduct,
 		});
 	};
 
@@ -93,24 +96,26 @@ export const useFormCalculatorSingle = () => {
 				name: finalValues.valueName, // Asegúrate de que esto no sea undefined
 				unity: finalValues.valueCant, // Asegúrate de que esto sea un string válido
 				userId: user.uid,
+				marked: `%${inputsValues.markedProduct}`,
 			};
 			console.log('Datos a enviar: ', dataToAdd);
 
 			await addDoc(collection(db, 'products'), dataToAdd);
 
 			setTimeout(() => {}, 3000);
-
-			setFinalValues({
-				valueName: '',
-				valueCant: '',
-			});
-			clearForm();
+			await getList();
 		} catch (error) {
 			console.error(
 				'Error al agregar el documento: ',
 				error.code,
 				error.message,
 			);
+		} finally {
+			setFinalValues({
+				valueName: '',
+				valueCant: '',
+			});
+			clearForm();
 		}
 	};
 
@@ -124,7 +129,7 @@ export const useFormCalculatorSingle = () => {
 	const clearForm = () => {
 		setInputsValues({
 			...inputsValues,
-			name: '',
+			price: '',
 		});
 		setInputNameSingle('');
 	};

@@ -6,11 +6,13 @@ import {
 	BsCalculator,
 	BsEye,
 	BsGraphUpArrow,
+	BsPencil,
 	BsPercent,
 	BsPersonCheck,
 	BsPlus,
 	BsSearch,
 	BsStack,
+	BsTrash,
 } from 'react-icons/bs';
 
 import { FcGoogle } from 'react-icons/fc';
@@ -29,4 +31,6 @@ export const iconMap = {
 	add: BsPlus,
 	singOut: BsBoxArrowLeft,
 	search: BsSearch,
+	edit: BsPencil,
+	trash: BsTrash,
 };

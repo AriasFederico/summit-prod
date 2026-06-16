@@ -1,7 +1,5 @@
 import { iconMap } from "../../../../../../components/iconMap";
 import { ButtonCta } from "../../../../../../components/ui";
-import { ButtonReset } from "../../buttons/reset/ButtonReset";
-import { Button } from "../../components";
 import { Input } from "../../input/Input";
 import { useFormCalculatorSingle } from "../hooks/useFormCalculatorSingle";
 import styles from './FormCalculatorSingle.module.scss'

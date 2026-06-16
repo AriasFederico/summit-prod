@@ -10,20 +10,19 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../../../../../context/GlobalContext';
 import { appFirebase } from '../../../../../../services/firebase/credentials';
-import { useGetList } from '../../../../products/hooks/useGetList';
 
 const db = getFirestore(appFirebase);
 
 export const useFormCalculator = () => {
+	const { getList, handleDeleteItem } = useContext(GlobalContext);
 	const redirect = useNavigate();
-	const { handleDeleteItem } = useGetList();
 	const [subId, setSubId] = useState('');
 	const auth = getAuth();
 
 	// Estados para los valores de porcentaje y precio
 	const [inputsValues, setInputsValues] = useState({
-		markedCant: localStorage.getItem('markedCant') || '',
-		markedUnity: localStorage.getItem('markedUnity') || '',
+		markedCant: localStorage.getItem('markedCant'),
+		markedUnity: localStorage.getItem('markedUnity'),
 		price: '',
 		quantity: '',
 	});
@@ -63,13 +62,12 @@ export const useFormCalculator = () => {
 		const unityPercentage = toPercentage(markedUnity);
 		const priceNumber = toNumber(price);
 		const quantity = toNumber(cant);
-
 		const priceWithCantPercentage = priceNumber * (1 + cantPercentage);
-
 		if (!markedUnity) return priceWithCantPercentage;
 
 		const priceWithUnityPercentage = priceNumber * (1 + unityPercentage);
 		const pricePerUnit = priceWithUnityPercentage / quantity;
+
 		return {
 			priceCant: priceWithCantPercentage.toLocaleString('de-DE'),
 			priceUnity: Math.ceil(pricePerUnit),
@@ -81,6 +79,8 @@ export const useFormCalculator = () => {
 		valueName: '',
 		valueCant: '',
 		valueUnity: '',
+		marked: '',
+		quantity: '',
 	});
 
 	// Manejador de envío de formulario
@@ -98,6 +98,7 @@ export const useFormCalculator = () => {
 			valueName: inputName,
 			valueCant: priceCant,
 			valueUnity: priceUnity,
+			quantity: quantity,
 		});
 	};
 
@@ -110,24 +111,32 @@ export const useFormCalculator = () => {
 				console.error('Usuario no autenticado');
 				return;
 			}
+			const nameProduct =
+				finalValues.valueName[0].toUpperCase() + finalValues.valueName.slice(1);
 			const dataToAdd = {
-				name: finalValues.valueName,
-				volume: inputsValues.quantity || '-',
-				priceCant: finalValues.valueCant || '-',
+				name: `${nameProduct} (${finalValues.quantity})`,
+				volume: inputsValues.quantity,
+				priceCant: finalValues.valueCant,
 				unity: finalValues.valueUnity,
 				userId: user.uid,
+				marked: `%${markedCant} - %${markedUnity}`,
 				// ACA AGEGAR LO QUE TIENE LA CALCULADORA SINGLE
 			};
 
 			await addDoc(collection(db, 'products'), dataToAdd);
-
-			clearForm();
+			await getList();
 		} catch (error) {
 			console.error(
 				'Error al agregar el documento:',
 				error.code,
 				error.message,
 			);
+		} finally {
+			setFinalValues({
+				valueCant: '',
+				valueUnity: '',
+			});
+			clearForm();
 		}
 	};
 
@@ -147,6 +156,8 @@ export const useFormCalculator = () => {
 			}
 		} catch (error) {
 			console.log(error);
+		} finally {
+			await getList();
 		}
 	};
 

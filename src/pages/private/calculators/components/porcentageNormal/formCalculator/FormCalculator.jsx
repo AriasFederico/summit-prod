@@ -1,7 +1,5 @@
 import { iconMap } from "../../../../../../components/iconMap.js";
 import { ButtonCta } from "../../../../../../components/ui/index.js";
-import { ButtonReset } from "../../buttons/reset/ButtonReset.jsx";
-import { Button } from "../../components.js";
 import { Input } from "../../input/Input";
 import { useFormCalculator } from "../hooks/useFormCalculator.js";
 import styles from './FormCalculator.module.scss'
@@ -36,7 +34,7 @@ export const FormCalculator = () => {
 			<form onSubmit={handleSubmit} className={styles.calculatorForm}>
 				<div className={styles.markedContainer}>
 					<label className={styles.label}>
-						Marcado por unidad total
+						Marcado por cantidad total
 						<input className={styles.input} type="number" name={"markedCant"} value={markedCant} onChange={handleChange} onWheel={(e) => e.target.blur()} placeholder="%" />
 					</label>
 					<label className={styles.label}>

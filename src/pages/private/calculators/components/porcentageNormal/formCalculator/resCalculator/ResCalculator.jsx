@@ -1,5 +1,4 @@
 import { ButtonCta } from "../../../../../../../components/ui/index.js";
-import { Button } from "../../../buttons/Button.jsx";
 import styles from './ResCalculator.module.scss'
 
 export const ResCalculator = ({ name, cant, unity, event }) => {

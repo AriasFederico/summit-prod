@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { getAuth } from 'firebase/auth';
 import {
 	collection,
 	deleteDoc,
-	getDocs,
 	doc,
+	getDocs,
 	getFirestore,
 	query,
 	where,
-} from "firebase/firestore";
-import { appFirebase } from "../../../../services/firebase/credentials";
-import { getAuth } from "firebase/auth";
+} from 'firebase/firestore';
+import { useState } from 'react';
+import { appFirebase } from '../../../../services/firebase/credentials';
 const db = getFirestore(appFirebase);
 
 export const useGetList = () => {
@@ -19,16 +19,12 @@ export const useGetList = () => {
 		try {
 			const auth = getAuth();
 			const user = auth.currentUser;
-			console.log("Usuario actual:", user); // Agrega este log
-
 			if (!user) {
-				console.log("Usuario no autenticado");
 				return;
 			}
-
 			const q = query(
-				collection(db, "products"),
-				where("userId", "==", user.uid),
+				collection(db, 'products'),
+				where('userId', '==', user.uid),
 			);
 			const querySnapshot = await getDocs(q);
 			const docs = [];
@@ -37,7 +33,6 @@ export const useGetList = () => {
 			});
 
 			setList(docs);
-			console.log("Productos del usuario:", docs);
 		} catch (error) {
 			console.log(error);
 		}
@@ -46,11 +41,11 @@ export const useGetList = () => {
 	const handleDeleteItem = async (id) => {
 		try {
 			// Crear una referencia al documento
-			const docRef = doc(db, "products", id);
+			const docRef = doc(db, 'products', id);
 			await deleteDoc(docRef); // Pasar la referencia al documento
-			getList(); // Volver a obtener la lista
+			await getList();
 		} catch (error) {
-			console.error("Error al eliminar el documento: ", error);
+			console.error('Error al eliminar el documento: ', error);
 		}
 	};
 	return {

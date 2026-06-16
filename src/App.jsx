@@ -1,18 +1,17 @@
 import Aos from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
-// ELIMINAR AOS ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 import { useContext, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Header } from './components/layout';
 import { GlobalContext } from './context/GlobalContext';
 import { Calculators, Dashboard, Home, Login, PrivateRoute, Products, Register, Reset_Password } from './pages';
+// ELIMINAR AOS ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+import { useGetList } from './pages/private/products/hooks/useGetList';
 
 function App() {
+
 	const { logged } = useContext(GlobalContext);
-	useEffect(() => {
-		Aos.init();
-	}, []);
 
 	return (
 		<BrowserRouter>

@@ -1,18 +1,85 @@
-@import '../../../../../sass/variables';
-@import '../../../../../sass/mixins';
 
 .table {
-  border-spacing: 0;
-  width: 100%;
-  margin-top: $space-2;
+    min-width: 100%;
+    overflow-y: scroll;
+    margin-top: $space-2;
+    text-align: left;
+    color: $foreground;
+    border-collapse: collapse;
+    // border-spacing: 5px 5px;
+    border-radius: $radius-md;
+    overflow: hidden;
+    user-select: none;
+    transition: $transition;
+    
+    .thead {
+        background-color: $color-primary;
+        color: white;
+        // color: $foreground-muted;
+        letter-spacing: 1px;
+    }    
+    
+    .th {
+        padding: $space-1 10px;
+        font-weight: 500;
+    }
+    
+    .tdName {
+        // font-weight: 500;
+    }
+    
+    .marked,
+    .tdUnity,
+    .tdPriceCant {
+        letter-spacing: 1px;
+    }
+    
+    .tdMarked {
+        font-size: $font-sm;
+        font-weight: bold;
+        color: $color-primary;
+    }
 
-  .th {
-    text-align: start;
-  }
+    .tdPriceCant,.tdUnity {
+        font-weight: 500;
+    }
+    
+    .tr {
+        &:hover {
+            background-color: $bg-soft;
+            .iconAction {
+                display: block;
+            }
+        }
 
-  .tr {}
+    }
+    
+    .tbody {
+        // border-bottom: $space-2 solid transparent;
+        border: 1px inset $color-border;
+        max-height: 300px;
+        // padding: $space-2;
+    }
+    
+    td {
+        padding: $space-2 10px;
+    }
 
-  .tr {
-  }
+    .iconsContainer {
+        display: flex;
+        align-items: center;
+        gap: $space-1;
+    }
 
+    .iconAction {
+        width: $space-2;
+        color: $foreground-muted;
+        display: none;
+        cursor: pointer;
+
+        &:hover {
+            color: $foreground;
+        }
+    }
 }
+
