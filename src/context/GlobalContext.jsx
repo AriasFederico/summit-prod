@@ -2,7 +2,6 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
 import { useGetList } from "../pages/private/products/hooks/useGetList";
-
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
@@ -23,7 +22,7 @@ export const GlobalProvider = ({ children }) => {
 				setUser(null);
 				setLogged(false);
 			}
-			// setLoading(true); // Detener el loading después de verificar el usuario
+			setLoading(false); // Detener el loading después de verificar el usuario
 		});
 
 		return () => unsubscribe();

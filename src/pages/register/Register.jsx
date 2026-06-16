@@ -4,12 +4,15 @@ import { iconMap } from '../../components/iconMap';
 import { SectionLayout } from '../../components/layout';
 import { ButtonCta, ButtonGoogle } from '../../components/ui';
 import { signInWithGoogle } from '../../services/firebase/credentials';
+import { Navigate } from 'react-router-dom';
+
 import { useForm } from '../../utils/useForm';
 import styles from './Register.module.scss'
 import { useRegister } from './hooks/useRegister';
 import { useRegisterSubmit } from './hooks/useRegisterSubmit';
 
-export const Register = () => {
+export const Register = ({verifyLogged}) => {
+	if (verifyLogged) return <Navigate to={'/control'} />;
 	const { initialRegister } = useRegister();
 	const { values, handleChange, resetForm } = useForm(initialRegister);
 	const EyeIcon = iconMap.eye;
